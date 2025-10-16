@@ -16,7 +16,8 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-cocoa-900/85 backdrop-blur border-b border-gold-700">
-      <div className="container flex items-center justify-between py-3">
+      {/* full width; small left/right padding keeps it near the edge on any screen */}
+      <div className="w-full flex items-center justify-between py-3 px-3 md:px-6">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative h-10 w-10 overflow-hidden rounded-lg border-gold">
             <Image src="/logo.png" alt="Victor’s Classic Deli" fill className="object-cover" />
@@ -25,7 +26,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex gap-5">
-          {links.map((l) => (
+          {links.map(l => (
             <Link
               key={l.href}
               href={l.href}
@@ -39,7 +40,7 @@ export default function Header() {
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden px-3 py-2 border-gold text-amber-100"
-           aria-expanded={open ? "true" : "false"} 
+          aria-expanded={open ? "true" : "false"}
           aria-controls="mobile-nav"
         >
           ☰
@@ -48,8 +49,9 @@ export default function Header() {
 
       {open && (
         <nav id="mobile-nav" className="md:hidden border-t border-gold-700">
-          <ul className="container py-3 space-y-2">
-            {links.map((l) => (
+          {/* match header padding so items sit near edge */}
+          <ul className="w-full px-3 md:px-6 py-3 space-y-2">
+            {links.map(l => (
               <li key={l.href}>
                 <Link
                   href={l.href}

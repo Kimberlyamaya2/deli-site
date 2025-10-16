@@ -7,7 +7,7 @@ export default function HomePage() {
     <div className="space-y-12">
       <OrnateFrame>
         {/* Centered two-column hero */}
-        <section className="grid md:grid-cols-[1.15fr_1fr] gap-10 items-center">
+        <section className="grid md:grid-cols-[1.15fr_1fr] items-center gap-10">
   {/* Left: headline + actions */}
   <div className="space-y-4">
     <h1 className="h-display text-gold text-5xl leading-tight">
@@ -30,9 +30,10 @@ export default function HomePage() {
   {/* ✅ Right: shifted image (moved toward the right) */}
   <div className="relative ml-auto h-64 w-[28rem] md:h-80 md:w-[34rem] rounded-2xl overflow-hidden border-gold">
     <Image
-      src="/images/hero.jpg"
+      src="/hero.jpg"
       alt="Signature sandwich"
       fill
+      sizes="(min-width: 768px) 34rem, 90vw"
       className="object-cover"
       priority
     />
