@@ -14,7 +14,7 @@ function renderPrice(item: Menu[number]["items"][number]) {
 
 export default function MenuGrid() {
   return (
-    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2 pt-4 pb-6">
       {menu.map((section) => (
         <section key={section.category}>
           <h2 className="h-display text-gold text-2xl mb-4">{section.category}</h2>
