@@ -1,0 +1,44 @@
+import type { Menu } from "@/types/menu";
+import rawMenu from "@/data/menu.json";
+
+const menu = rawMenu as unknown as Menu;
+
+function renderPrice(item: Menu[number]["items"][number]) {
+  if (typeof item.price === "number") return `$${item.price.toFixed(2)}`;
+  if (typeof item.priceTier === "number") {
+    const tier = Math.max(1, Math.min(5, item.priceTier));
+    return "💲".repeat(tier);
+  }
+  return "";
+}
+
+export default function MenuGrid() {
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      {menu.map((section) => (
+        <section key={section.category}>
+          <h2 className="text-2xl font-semibold mb-4">{section.category}</h2>
+          <ul className="space-y-3">
+            {section.items.map((item) => (
+              <li key={item.name} className="flex justify-between gap-4">
+                <div>
+                  <p className="font-medium">
+                    {item.name}{" "}
+                    {item.tags?.includes("spicy") && <span>🌶</span>}
+                    {item.tags?.includes("veg") && <span>🟢</span>}
+                  </p>
+                  {item.desc && (
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  )}
+                </div>
+                <span className="font-semibold whitespace-nowrap">
+                  {renderPrice(item)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
