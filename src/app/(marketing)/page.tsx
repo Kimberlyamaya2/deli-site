@@ -26,6 +26,19 @@ export default function HomePage() {
               </a>
             </div>
           </div>
+
+          {/* ✅ Right: centered image */}
+          <div className="flex justify-center">
+            <div className="relative h-64 w-[28rem] md:h-80 md:w-[32rem] rounded-2xl overflow-hidden border-gold">
+              <Image
+                src="/public/hero.jpg"
+                alt="Signature sandwich"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
         </section>
       </OrnateFrame>
 
@@ -36,7 +49,10 @@ export default function HomePage() {
           { h: "Call", p: "(000) 000-0000" },
           { h: "Visit", p: "Nashville, TN (Mena Plaza)" },
         ].map((c) => (
-          <div key={c.h} className="p-5 bg-cocoa-800/60 border-gold rounded-2xl">
+          <div
+            key={c.h}
+            className="p-5 bg-cocoa-800/60 border-gold rounded-2xl text-center"
+          >
             <h2 className="h-display text-gold text-xl mb-2">{c.h}</h2>
             <p className="text-amber-100/90">{c.p}</p>
           </div>
