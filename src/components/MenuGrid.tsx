@@ -17,10 +17,10 @@ export default function MenuGrid() {
     <div className="grid gap-8 md:grid-cols-2">
       {menu.map((section) => (
         <section key={section.category}>
-          <h2 className="text-2xl font-semibold mb-4">{section.category}</h2>
+          <h2 className="h-display text-gold text-2xl mb-4">{section.category}</h2>
           <ul className="space-y-3">
             {section.items.map((item) => (
-              <li key={item.name} className="flex justify-between gap-4">
+              <li key={item.name} className="flex justify-between gap-4 py-2 border-b border-[rgba(212,175,55,0.25)]">
                 <div>
                   <p className="font-medium">
                     {item.name}{" "}
@@ -28,12 +28,12 @@ export default function MenuGrid() {
                     {item.tags?.includes("veg") && <span>🟢</span>}
                   </p>
                   {item.desc && (
-                    <p className="text-sm text-gray-500">{item.desc}</p>
+                    <p className="text-sm text-amber-100/70">{item.desc}</p>
                   )}
                 </div>
-                <span className="font-semibold whitespace-nowrap">
-                  {renderPrice(item)}
-                </span>
+                <span className="font-semibold whitespace-nowrap text-amber-100">
+  {renderPrice(item)}
+</span>
               </li>
             ))}
           </ul>
