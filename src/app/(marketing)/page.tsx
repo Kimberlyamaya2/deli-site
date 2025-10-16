@@ -8,38 +8,37 @@ export default function HomePage() {
       <OrnateFrame>
         {/* Centered two-column hero */}
         <section className="grid md:grid-cols-[1.15fr_1fr] gap-10 items-center">
-          {/* Left: headline + actions */}
-          <div className="space-y-4">
-            <h1 className="h-display text-gold text-5xl leading-tight">
-              Victor’s Classic Deli
-            </h1>
-            <p className="text-amber-100/90">
-              Hot sandwiches, burgers, wraps, pizza & breakfast—made to order.
-            </p>
-            <div className="flex gap-3">
-              <GoldButton href="/menu">View Menu</GoldButton>
-              <a
-                href="/apply"
-                className="inline-block px-5 py-2 rounded-xl border border-[rgba(212,175,55,0.75)] text-amber-100/90 hover:text-amber-50"
-              >
-                Apply
-              </a>
-            </div>
-          </div>
+  {/* Left: headline + actions */}
+  <div className="space-y-4">
+    <h1 className="h-display text-gold text-5xl leading-tight">
+      Victor’s Classic Deli
+    </h1>
+    <p className="text-amber-100/90">
+      Hot sandwiches, burgers, wraps, pizza & breakfast—made to order.
+    </p>
+    <div className="flex gap-3">
+      <GoldButton href="/menu">View Menu</GoldButton>
+      <a
+        href="/apply"
+        className="inline-block px-5 py-2 rounded-xl border border-[rgba(212,175,55,0.75)] text-amber-100/90 hover:text-amber-50"
+      >
+        Apply
+      </a>
+    </div>
+  </div>
 
-          {/* ✅ Right: centered image */}
-          <div className="flex justify-center">
-            <div className="relative h-64 w-[28rem] md:h-80 md:w-[32rem] rounded-2xl overflow-hidden border-gold">
-              <Image
-                src="/public/hero.jpg"
-                alt="Signature sandwich"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </section>
+  {/* ✅ Right: shifted image (moved toward the right) */}
+  <div className="relative ml-auto h-64 w-[28rem] md:h-80 md:w-[34rem] rounded-2xl overflow-hidden border-gold">
+    <Image
+      src="/images/hero.jpg"
+      alt="Signature sandwich"
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
+</section>
+
       </OrnateFrame>
 
       {/* Info cards under hero */}
