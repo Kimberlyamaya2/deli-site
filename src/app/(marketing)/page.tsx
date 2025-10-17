@@ -33,7 +33,7 @@ export default function HomePage() {
   <div className="justify-self-stretch md:justify-self-end">
     <div className="relative w-full h-48 sm:h-56 md:h-80 md:w-[34rem] rounded-2xl overflow-hidden border-gold">
       <Image
-        src="/images/hero.jpg"
+        src="/hero.jpg"
         alt="Signature sandwich"
         fill
         sizes="(min-width: 1024px) 34rem, (min-width: 640px) 60vw, 90vw"
