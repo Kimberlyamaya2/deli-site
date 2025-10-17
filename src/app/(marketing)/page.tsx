@@ -7,38 +7,43 @@ export default function HomePage() {
     <div className="space-y-12">
       <OrnateFrame>
         {/* Centered two-column hero */}
-        <section className="grid md:grid-cols-[1.15fr_1fr] items-center gap-10">
+        <section className="grid grid-cols-1 md:grid-cols-[1.15fr_1fr] items-center gap-6 md:gap-10">
   {/* Left: headline + actions */}
   <div className="space-y-4">
-    <h1 className="h-display text-gold text-5xl leading-tight">
+    <h1 className="h-display text-gold text-[clamp(1.75rem,8vw,3.5rem)] leading-tight text-balance">
       Victor’s Classic Deli
     </h1>
-    <p className="text-amber-100/90">
+
+    <p className="text-amber-100/90 text-sm md:text-base max-w-prose">
       Hot sandwiches, burgers, wraps, pizza & breakfast—made to order.
     </p>
-    <div className="flex gap-3">
+
+    <div className="flex gap-3 flex-col xs:flex-row sm:flex-row max-w-xs sm:max-w-none">
       <GoldButton href="/menu">View Menu</GoldButton>
       <a
         href="/apply"
-        className="inline-block px-5 py-2 rounded-xl border border-[rgba(212,175,55,0.75)] text-amber-100/90 hover:text-amber-50"
+        className="inline-block px-5 py-2 rounded-xl border border-[rgba(212,175,55,0.75)] text-amber-100/90 hover:text-amber-50 text-center"
       >
         Apply
       </a>
     </div>
   </div>
 
-  {/* ✅ Right: shifted image (moved toward the right) */}
-  <div className="relative ml-auto h-64 w-[28rem] md:h-80 md:w-[34rem] rounded-2xl overflow-hidden border-gold">
-    <Image
-      src="/hero.jpg"
-      alt="Signature sandwich"
-      fill
-      sizes="(min-width: 768px) 34rem, 90vw"
-      className="object-cover"
-      priority
-    />
+  {/* Right: image – smaller on mobile, pushed right on md+ */}
+  <div className="justify-self-stretch md:justify-self-end">
+    <div className="relative w-full h-48 sm:h-56 md:h-80 md:w-[34rem] rounded-2xl overflow-hidden border-gold">
+      <Image
+        src="/images/hero.jpg"
+        alt="Signature sandwich"
+        fill
+        sizes="(min-width: 1024px) 34rem, (min-width: 640px) 60vw, 90vw"
+        className="object-cover"
+        priority
+      />
+    </div>
   </div>
 </section>
+
 
       </OrnateFrame>
 

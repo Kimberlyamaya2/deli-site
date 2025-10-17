@@ -66,6 +66,9 @@ body {
   border-radius: 1rem;
 }
 
+/* nice multi-line heading wrapping on supported browsers */
+.text-balance { text-wrap: balance; }
+
 /* subtle texture overlay, optional */
 body::after {
   content: "";
