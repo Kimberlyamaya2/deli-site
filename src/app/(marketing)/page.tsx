@@ -1,6 +1,7 @@
 import Image from "next/image";
 import OrnateFrame from "@/components/OrnateFrame";
 import GoldButton from "@/components/GoldButton";
+import SectionLinkOverlay from "@/components/SectionLinkOverlay";
 
 export default function HomePage() {
   return (
@@ -66,8 +67,20 @@ export default function HomePage() {
       </div>
 
       {/* MENU SECTION */}
-      <section id="menu" className="scroll-mt-20 space-y-6">
-        <h2 className="h-display text-gold text-3xl">Menu Highlights</h2>
+      <section
+        id="menu"
+        className="relative scroll-mt-20 space-y-6 group rounded-2xl border-gold p-4"
+      >
+        {/* Full-section link to /menu */}
+        <SectionLinkOverlay href="/menu" label="Go to full Menu page" />
+
+        <h2 className="h-display text-gold text-3xl flex items-center gap-2">
+          Menu Highlights
+          <span className="text-xs opacity-70 group-hover:opacity-100 transition">
+            (click section to open full menu)
+          </span>
+        </h2>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { name: "Classic Reuben", price: "$12", img: "/reuben.jpg" },
@@ -91,7 +104,11 @@ export default function HomePage() {
       </section>
 
       {/* ABOUT SECTION */}
-      <section id="about" className="scroll-mt-20">
+      <section
+        id="about"
+        className="relative scroll-mt-20 group hover:bg-white/5 transition rounded-2xl border-gold p-4"
+      >
+        <SectionLinkOverlay href="/about" label="Read more About us" />
         <h2 className="h-display text-gold text-3xl mb-4">About Us</h2>
         <p className="text-amber-100/90 max-w-prose">
           Family-owned and operated since 1995, Victor’s Classic Deli serves
@@ -101,7 +118,11 @@ export default function HomePage() {
       </section>
 
       {/* VISIT SECTION */}
-      <section id="visit" className="scroll-mt-20 space-y-4">
+      <section
+        id="visit"
+        className="relative scroll-mt-20 group rounded-2xl border-gold p-4"
+      >
+        <SectionLinkOverlay href="/contact" label="Get directions & contact" />
         <h2 className="h-display text-gold text-3xl mb-2">Visit Us</h2>
         <p className="text-amber-100/90">Mena Plaza, Nashville, TN</p>
         <div className="rounded-xl border-gold overflow-hidden">
@@ -115,9 +136,13 @@ export default function HomePage() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="scroll-mt-20">
+      <section
+        id="contact"
+        className="relative scroll-mt-20 group rounded-2xl border-gold p-4"
+      >
+        <SectionLinkOverlay href="/contact" label="Go to full Contact page" />
         <h2 className="h-display text-gold text-3xl mb-4">Contact Us</h2>
-        <form className="max-w-md space-y-3">
+        <form className="max-w-md space-y-3 relative z-20">
           <input
             placeholder="Name"
             className="w-full px-4 py-2 bg-cocoa-800/60 border border-gold rounded-xl"
