@@ -23,9 +23,9 @@ export default function HomePage() {
             </p>
 
             <div className="flex gap-3 flex-col xs:flex-row sm:flex-row max-w-xs sm:max-w-none">
-              <GoldButton href="#menu">View Menu</GoldButton>
+              <GoldButton href="/menu">View Menu</GoldButton>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-block px-5 py-2 rounded-xl border border-[rgba(212,175,55,0.75)] text-amber-100/90 hover:text-amber-50 text-center"
               >
                 Contact

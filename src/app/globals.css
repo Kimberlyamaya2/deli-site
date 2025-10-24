@@ -38,24 +38,40 @@ body {
 /* display serif for big headings */
 .h-display {
   font-family: var(--font-display, ui-serif, Georgia, serif);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+  text-transform: none;
+  line-height: 1.1;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.5),
+    0 4px 8px rgba(0,0,0,0.4),
+    0 0 15px rgba(255, 235, 160, 0.2);
 }
 
-/* rich embossed gold text */
+
+/* rich, embossed gold text with a brighter pop */
 .text-gold {
+  font-weight: 700; /* makes the letters thicker */
+  letter-spacing: 0.015em;
   background: linear-gradient(
     180deg,
     var(--gold-highlight) 0%,
-    var(--gold-primary) 45%,
-    var(--gold-deep) 100%
+    #fff7c0 30%,            /* adds a brighter gleam near top */
+    var(--gold-primary) 55%,
+    var(--gold-deep) 90%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+
+  /* adds glowing + 3D pop */
   text-shadow:
-    0 1px 0 rgba(0,0,0,0.35),
-    0 2px 6px rgba(0,0,0,0.35);
+    0 1px 0 rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 0 10px rgba(255, 235, 150, 0.25), /* soft glow */
+    0 0 15px rgba(255, 220, 120, 0.15);
 }
+
 
 /* ornate gold frame with inset bevel */
 .border-gold {
