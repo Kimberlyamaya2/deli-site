@@ -103,64 +103,78 @@ html{
 
 /* --- Gold headline styles (apply ONLY to headers) --- */
 
-/* Big, beveled, shiny */
-.heading-gold {
+/* ---- LOGO-INSPIRED TITLES ---- */
+
+/* Hero H1 — thick, beveled, NO shimmer (logo vibe) */
+.title-hero {
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+
+  /* metallic fill (warmer + deeper like the logo) */
   background: linear-gradient(
     180deg,
-    #fceea9 0%,
-    #fff7c0 28%,
-    var(--gold-primary) 55%,
-    var(--gold-deep) 88%,
-    #533507 100%
+    #fff2b8 0%,
+    #ffd770 28%,
+    #e1b045 56%,
+    #b27a23 78%,
+    #6a4614 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  -webkit-text-stroke: 0.4px rgba(255, 248, 210, 0.35);
+
+  /* beveled edges & separation from cocoa bg */
+  -webkit-text-stroke: 0.6px rgba(59, 42, 10, 0.7);       /* dark outline like engraved edge */
   text-shadow:
-    0 1px 0 #d4a017,
-    0 2px 2px rgba(0,0,0,.30),
-    0 3px 6px rgba(0,0,0,.45),
-    0 0 10px rgba(255, 230, 150, .22);
+    0 1px 0 #ffdfa2,                                      /* top lip highlight */
+    0 2px 2px rgba(0,0,0,.35),                            /* inner depth */
+    0 6px 10px rgba(0,0,0,.55);                           /* outer drop for lift */
 }
 
-/* For subheaders (lighter but dimensional) */
-.subhead-gold {
+/* Section H2/H3 — brighter + readable, subtle shimmer allowed */
+.title-section {
   font-weight: 800;
   letter-spacing: 0.02em;
-  background: linear-gradient(180deg, #fff6bf 0%, var(--gold-primary) 55%, var(--gold-deep) 100%);
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    180deg,
+    #fff8cd 0%,
+    #ffd56c 40%,
+    #d7a53a 85%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  -webkit-text-stroke: 0.3px rgba(255, 248, 210, 0.25);
+
+  -webkit-text-stroke: 0.45px rgba(50, 35, 8, 0.65);     /* stronger edge for contrast */
   text-shadow:
-    0 1px 0 rgba(0,0,0,.35),
-    0 2px 5px rgba(0,0,0,.35);
+    0 1px 0 rgba(255,235,170,.9),
+    0 2px 5px rgba(0,0,0,.45);                            /* keeps it readable on dark */
 }
 
-/* Optional shimmer animation */
-.heading-shimmer {
+/* Gentle shimmer you can add to section headers ONLY (not hero) */
+.title-shimmer {
   position: relative;
   overflow: hidden;
 }
-.heading-shimmer::after {
+.title-shimmer::after {
   content: "";
   position: absolute; inset: 0;
   background: linear-gradient(
     75deg,
     transparent 0%,
-    rgba(255,255,210,.35) 45%,
-    rgba(255,255,255,.55) 50%,
-    rgba(255,255,210,.35) 55%,
+    rgba(255,245,200,.40) 46%,
+    rgba(255,255,255,.60) 50%,
+    rgba(255,245,200,.40) 54%,
     transparent 100%
   );
   mix-blend-mode: overlay;
-  animation: shimmer 6s infinite;
+  animation: titleShimmer 7s linear infinite;
+  pointer-events: none;
 }
-@keyframes shimmer {
-  0% { transform: translateX(-150%); }
-  50% { transform: translateX(150%); }
-  100% { transform: translateX(150%); }
+@keyframes titleShimmer {
+  0%   { transform: translateX(-160%); }
+  100% { transform: translateX(160%); }
 }

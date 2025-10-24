@@ -14,7 +14,7 @@ export default function HomePage() {
         >
           {/* Left: headline + actions */}
           <div className="space-y-4">
-            <h1 className="h-display heading-gold text-[clamp(1.75rem,8vw,3.5rem)] leading-tight text-balance">
+             <h1 className="h-display title-hero text-[clamp(1.75rem,8vw,3.5rem)] leading-tight text-balance">
     Victor’s Classic Deli
   </h1>
             <p className="text-amber-100/90 text-sm md:text-base max-w-prose">
@@ -59,7 +59,7 @@ export default function HomePage() {
             key={c.h}
             className="p-5 bg-cocoa-800/60 border-gold rounded-2xl text-center"
           >
-           <h2 className="h-display subhead-gold text-xl mb-2">{c.h}</h2>
+          <h2 className="h-display title-section text-xl mb-2">{c.h}</h2>
             <p className="text-amber-100/90">{c.p}</p>
           </div>
         ))}
@@ -122,7 +122,7 @@ export default function HomePage() {
         className="relative scroll-mt-20 group rounded-2xl border-gold p-4"
       >
         <SectionLinkOverlay href="/contact" label="Get directions & contact" />
-        <h2 className="h-display subhead-gold text-3xl mb-2">Visit Us</h2>
+       <h2 className="h-display subhead-gold text-3xl mb-2">Visit Us</h2>
         <p className="text-amber-100/90">Mena Plaza, Nashville, TN</p>
         <div className="rounded-xl border-gold overflow-hidden">
           <iframe
@@ -140,7 +140,7 @@ export default function HomePage() {
         className="relative scroll-mt-20 group rounded-2xl border-gold p-4"
       >
         <SectionLinkOverlay href="/contact" label="Go to full Contact page" />
-        <h2 className="h-display subhead-gold text-3xl mb-4">Contact Us</h2>
+       <h2 className="h-display subhead-gold text-3xl mb-4">Contact Us</h2>
         <form className="max-w-md space-y-3 relative z-20">
           <input
             placeholder="Name"
