@@ -47,12 +47,12 @@ export default function HomePage() {
         >
           View Menu
         </GoldButton>
-        <a
+       <GoldButton
           href="/contact"
-          className="inline-block px-5 py-2 rounded-xl border border-[rgba(212,175,55,0.75)] text-amber-100/90 hover:text-amber-50 hover:bg-[rgba(212,175,55,0.08)] hover:shadow-[0_8px_24px_rgba(212,175,55,0.18)] text-center transition"
+          className="border border-[rgba(212,175,55,0.75)] shadow-[0_8px_20px_rgba(212,175,55,0.18)] hover:shadow-[0_10px_24px_rgba(212,175,55,0.26)]"
         >
-          Contact
-        </a>
+         Contact
+        </GoldButton>
       </div>
     </div>
 
@@ -117,18 +117,23 @@ export default function HomePage() {
         ))}
       </div>
       
-      {/* MENU SECTION */}
+   {/* MENU SECTION */}
 <section
   id="menu"
-  className="relative scroll-mt-20 space-y-6 group rounded-2xl border-gold p-4"
+  className="relative scroll-mt-20 space-y-8 py-10"
 >
-  {/* Full-section link */}
   <SectionLinkOverlay href="/menu" label="Go to full Menu page" />
 
-  <h2 className="h-display subhead-gold text-3xl flex items-center gap-2">
-    Menu Highlights
-  </h2>
+    {/* Centered heading with gold lines beside it */}
+  <div className="flex items-center justify-center gap-6 text-center">
+    <span className="h-[1px] w-24 md:w-40 bg-[var(--gold-primary)] opacity-60 rounded-full" />
+    <h2 className="h-display subhead-gold text-3xl md:text-4xl tracking-wide uppercase">
+      Menu Highlights
+    </h2>
+    <span className="h-[1px] w-24 md:w-40 bg-[var(--gold-primary)] opacity-60 rounded-full" />
+  </div>
 
+  {/* Menu items grid */}
   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {[
       { name: "Victor’s Chicken Bacon Ranch", price: "$12", img: "/chicken-bacon-ranch.jpg" },
@@ -139,12 +144,9 @@ export default function HomePage() {
         key={i.name}
         className="rounded-2xl border border-gold/70 overflow-hidden bg-cocoa-900/50 shadow-[0_6px_20px_rgba(212,175,55,0.1)] hover:-translate-y-1 transition-transform duration-300"
       >
-        {/* Image */}
         <div className="relative h-52 sm:h-56 md:h-64">
           <Image src={i.img} alt={i.name} fill className="object-cover object-center" />
-          {/* Warm bottom overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,14,10,0.75)] via-transparent to-transparent" />
-          {/* Caption */}
           <div className="absolute bottom-0 left-0 w-full px-5 py-3 bg-[rgba(26,14,10,0.85)] border-t border-[rgba(212,175,55,0.25)]">
             <div className="flex items-center justify-between text-gold-100">
               <p className="font-medium text-sm sm:text-base tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
@@ -162,19 +164,89 @@ export default function HomePage() {
 </section>
 
 
-      {/* ABOUT SECTION */}
-      <section
-        id="about"
-        className="relative scroll-mt-20 group hover:bg-white/5 transition rounded-2xl border-gold p-4"
-      >
-        <SectionLinkOverlay href="/about" label="Read more About us" />
-   <h2 className="h-display subhead-gold text-3xl mb-4">About Us</h2>
-        <p className="text-amber-100/90 max-w-prose">
-          Family-owned and operated since 1995, Victor’s Classic Deli serves
-          Nashville with hearty meals and a touch of nostalgia. From freshly
-          baked bread to house-made sauces, every bite tells our story.
+  {/* ABOUT / STORY SECTION (Coming Soon) */}
+<section
+  id="about"
+  className="relative scroll-mt-20 group rounded-2xl border-gold overflow-hidden"
+>
+  {/* Make the whole card link to the story page, while keeping inner CTAs clickable */}
+  <SectionLinkOverlay href="/about" label="Read Victor’s full story" />
+
+
+  {/* soft glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(900px_300px_at_50%_-10%,rgba(212,175,55,0.10),transparent)]" />
+
+  <div className="relative p-5 md:p-8">
+    {/* header */}
+    <div className="flex items-start justify-between gap-4">
+      <div>
+        <h2 className="h-display subhead-gold text-3xl md:text-4xl mb-1">
+          Our Story
+        </h2>
+        <p className="text-amber-100/80 text-sm">
+          Built on brotherhood, promise, and purpose.
         </p>
-      </section>
+      </div>
+
+      {/* status badge */}
+      <span className="shrink-0 rounded-full border border-gold/70 px-3 py-1 text-xs tracking-wide text-amber-100/90 bg-black/20 shadow-[0_0_0_1px_rgba(212,175,55,0.15)_inset]">
+        Opening 2026
+      </span>
+    </div>
+
+    <div className="mt-5 border-t border-gold/30" />
+
+    {/* teaser + quick facts */}
+    <div className="mt-6 grid gap-6 md:grid-cols-3">
+      <p className="md:col-span-2 text-amber-100/90 leading-relaxed max-w-prose">
+        Welcome to Victor’s Classic Deli, where every sandwich tells a story of
+        friendship, dedication, and a promise kept. This isn’t fast food, it’s
+        food that means something. We’re getting everything right for our grand
+        opening, and we can’t wait to welcome you.
+      </p>
+
+      <ul className="grid gap-3 text-amber-100/90">
+        {[
+          "Classic deli done with care",
+          "Nashville roots • Chicago inspiration",
+        ].map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-2 rounded-lg border border-gold/20 bg-black/10 px-3 py-2 group-hover:border-gold/40 transition"
+          >
+            <span className="mt-1 h-2 w-2 rounded-full bg-[--gold-primary]" />
+            <span className="text-sm">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* full story (collapsible) */}
+    <details className="mt-6 group/open">
+      <summary className="list-none inline-flex items-center gap-2 cursor-pointer rounded-xl border border-gold/60 bg-black/20 px-4 py-2 text-sm text-amber-100/90 hover:bg-white/5 hover:border-gold transition">
+        Read the full story
+        <svg
+          aria-hidden
+          viewBox="0 0 24 24"
+          className="h-4 w-4 transition group-open:rotate-180"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </summary>
+
+      <div className="mt-4 text-amber-100/90 leading-relaxed max-w-prose space-y-4">
+      </div>
+    </details>
+
+  </div>
+
+  {/* hover ring */}
+  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 ring-[--gold-primary]/0 transition duration-300 group-hover:ring-2 group-hover:ring-[--gold-primary]/25" />
+</section>
+
 
     {/* VISIT SECTION */}
 <section
