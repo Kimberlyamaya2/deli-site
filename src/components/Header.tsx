@@ -21,7 +21,11 @@ export default function Header() {
           <div className="relative h-10 w-10 overflow-hidden rounded-lg border-gold">
             <Image src="/logo.png" alt="Victor’s Classic Deli" fill className="object-cover" />
           </div>
-          <span className="h-display text-gold text-xl">Victor’s Classic Deli</span>
+         <span className="h-display text-gold-200 text-xl [text-shadow:0_0_8px_rgba(246,227,154,0.6)]">
+  Victor’s Classic Deli
+</span>
+
+
         </Link>
 
         <nav className="hidden md:flex gap-5">
