@@ -1,91 +1,101 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
-import rawMenu from "@/data/menu.json";
 
-const slugify = (s: string) =>
-  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
-export default function SectionPicker() {
-  const sections: string[] = (rawMenu as any[]).map((s) => s.category);
-  const sectionIds = sections.map((label) =>
-    slugify(label.replace(/^[^A-Za-z0-9]+/, ""))
+/** Default sections used when no props are provided */
+const DEFAULT_SECTIONS = [
+  { id: "hot-sandwiches", label: "Hot Sandwiches" },
+  { id: "build-your-own-sub", label: "Build Your Own Sub" },
+  { id: "panini-sandwiches", label: "Panini Sandwiches" },
+  { id: "wraps", label: "Wraps" },
+  { id: "salads", label: "Salads" },
+  { id: "soups", label: "Soups" },
+  { id: "sides", label: "Sides" },
+  { id: "drinks", label: "Drinks" },
+] as const;
+
+type Section = {
+  id: string;
+  label: string;
+};
+
+type SectionPickerProps = {
+  /** Optional; if omitted we use DEFAULT_SECTIONS */
+  sections?: Section[];
+  /** Optional; lets you control highlight from the page */
+  activeId?: string | null;
+  /**
+   * Optional; if omitted we provide a default that scrolls to the element
+   * whose id matches the selected section id.
+   */
+  onSelect?: (id: string) => void;
+  idPrefix?: string;
+};
+
+export default function SectionPicker({
+  sections,
+  activeId = null,
+  onSelect,
+  idPrefix = "section-picker",
+}: SectionPickerProps) {
+  const listRef = useRef<HTMLUListElement | null>(null);
+
+  // Use provided sections or fall back to defaults
+  const resolvedSections = useMemo<Section[]>(
+    () => (sections && sections.length > 0 ? sections : [...DEFAULT_SECTIONS]),
+    [sections]
   );
-  const [active, setActive] = useState(sectionIds[0] || "");
 
-  // Track which section is in view
+  const sectionIds = useMemo<string[]>(
+    () => resolvedSections.map((s) => s.id),
+    [resolvedSections]
+  );
+
+  // Built-in smooth scroll if no onSelect is provided
+  const handleSelect = useCallback(
+    (id: string) => {
+      if (onSelect) {
+        onSelect(id);
+        return;
+      }
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    },
+    [onSelect]
+  );
+
+  // Keep the active item visible when the activeId changes
   useEffect(() => {
-    const headings = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (!headings.length) return;
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible?.target?.id) setActive(visible.target.id);
-      },
-      { rootMargin: "-20% 0px -70% 0px", threshold: [0, 0.5] }
+    if (!activeId || !listRef.current) return;
+    const el = listRef.current.querySelector<HTMLButtonElement>(
+      `button[data-id="${activeId}"]`
     );
-
-    headings.forEach((h) => obs.observe(h));
-    return () => obs.disconnect();
-  }, []);
-
-  const items = useMemo(
-    () => sections.map((label, i) => ({ label, id: sectionIds[i] })),
-    []
-  );
-
-  const jump = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - 90;
-    window.scrollTo({ top, behavior: "smooth" });
-  };
+    el?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [activeId, sectionIds]);
 
   return (
-    <>
-      {/* Floating side menu (desktop only) */}
-      <aside
-        className="hidden lg:flex flex-col gap-1 fixed right-6 top-32 z-30
-                   bg-[#1A100C]/85 backdrop-blur-sm border border-gold/30
-                   rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.4)]
-                   px-2 py-3 w-44 text-sm text-amber-100/80"
-      >
-        <p className="text-[0.7rem] uppercase text-gold-300/70 mb-1 text-center tracking-wide">
-          Jump to
-        </p>
-        <select
-          value={active}
-          onChange={(e) => jump(e.target.value)}
-          className="w-full rounded-md border border-gold/60 bg-black/30 px-2 py-1.5 text-[0.85rem] text-amber-100/90 focus:border-gold/80"
-        >
-          {items.map(({ label, id }) => (
-            <option key={id} value={id}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </aside>
-
-      {/* Compact mobile dropdown */}
-      <div className="lg:hidden mb-6">
-        <select
-          value={active}
-          onChange={(e) => jump(e.target.value)}
-          aria-label="Jump to menu section"
-          className="w-full rounded-md border border-gold/50 bg-black/30 px-3 py-2 text-sm text-amber-100/90 focus:border-gold/80"
-        >
-          {items.map(({ label, id }) => (
-            <option key={id} value={id}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
+    <nav aria-label="Jump to section">
+      <ul ref={listRef} className="flex gap-2 overflow-x-auto">
+        {resolvedSections.map((s) => {
+          const isActive = s.id === activeId;
+          return (
+            <li key={s.id}>
+              <button
+                type="button"
+                data-id={s.id}
+                aria-current={isActive ? "true" : undefined}
+                aria-controls={`${idPrefix}-${s.id}`}
+                onClick={() => handleSelect(s.id)}
+                className={`rounded px-3 py-1 text-sm ${
+                  isActive ? "bg-foreground text-background" : "border"
+                }`}
+              >
+                {s.label}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
