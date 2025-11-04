@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const cinzelDeco = Cinzel_Decorative({ weight: ["400","700"], subsets: ["latin"], variable: "--font-display" });
+/*const cinzelDeco = Cinzel_Decorative({ weight: ["400","700"], subsets: ["latin"], variable: "--font-display" });*/
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
