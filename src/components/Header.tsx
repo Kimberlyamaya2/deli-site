@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
