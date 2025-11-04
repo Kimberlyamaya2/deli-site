@@ -1,3 +1,6 @@
+// at top of app/menu/page.tsx (and any other page that fetches)
+export const dynamic = "force-dynamic";
+
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef } from "react";
