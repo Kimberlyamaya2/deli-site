@@ -1,10 +1,10 @@
 [
   {
-    "category": "🔥 Hot Sandwiches",
+    "category": "Hot Sandwiches",
     "items": [
       { "name": "Victor’s Chicken Bacon Ranch", "desc": "Grilled chicken, crispy halal turkey bacon, American cheese, sautéed mixed peppers, lettuce, tomato, banana peppers, onions; ranch or chipotle ranch, mayo.", "price": null, "priceTier": 5, "tags": [] },
       { "name": "Victor’s NYC Chopped Cheese", "desc": "Juicy ground beef chopped with yellow American, lettuce, tomato, onions, pickles, Big Vic Sauce.", "price": null, "priceTier": 4, "tags": [] },
-      { "name": "🌶🌶🌶 Victor’s Spicy Chipotle Chicken", "desc": "Chopped grilled chicken, pepper jack, grilled onions, mixed peppers, hot peppers (giardiniera), lettuce, tomato, chipotle ranch, mayo.", "price": null, "priceTier": 4, "tags": ["spicy"] },
+      { "name": "Victor’s Spicy Chipotle Chicken", "desc": "Chopped grilled chicken, pepper jack, grilled onions, mixed peppers, hot peppers (giardiniera), lettuce, tomato, chipotle ranch, mayo.", "price": null, "priceTier": 4, "tags": ["spicy"] },
       { "name": "Victor’s Chopped Philly Cheesesteak", "desc": "Grilled steak, grilled onions, mixed peppers, creamy nacho cheese, mayo.", "price": null, "priceTier": 4, "tags": [] },
       { "name": "Victor’s Honey Turkey Bacon Melt", "desc": "Smoked turkey, bacon, honey mustard glaze, American, romaine, tomato, red onion; honey mustard, mayo.", "price": null, "priceTier": 4, "tags": [] },
       { "name": "Victor’s Triple Turkey Club", "desc": "Turkey breast, roast beef, turkey bacon, American, lettuce, tomato, pickle, onion; Dijon, Southern Gold sauce, mayo.", "price": null, "priceTier": 4, "tags": [] },
@@ -13,13 +13,13 @@
       { "name": "Victor’s Impossible Chopped Cheese", "desc": "Impossible patty chopped with yellow American, lettuce, tomato, onions, pickles, Big Vic Sauce.", "price": null, "priceTier": 4, "tags": ["veg"] },
       { "name": "Victor’s Chopped Impossible Philly", "desc": "Impossible patty, grilled onions, mixed peppers, nacho cheese, mayo.", "price": null, "priceTier": 4, "tags": ["veg"] },
       { "name": "Victor’s Chopped Chicken Philly", "desc": "Seasoned chicken, grilled mixed peppers & onions, nacho cheese, mayo.", "price": null, "priceTier": 4, "tags": [] },
-      { "name": "🌶🌶🌶 Victor’s Cajun Heat", "desc": "Spicy buffalo chicken, pepper jack, grilled onions, mixed peppers, jalapeño, lettuce, tomato, banana peppers; Victor’s Zesty Sauce.", "price": null, "priceTier": 4, "tags": ["spicy"] },
+      { "name": "Victor’s Cajun Heat", "desc": "Spicy buffalo chicken, pepper jack, grilled onions, mixed peppers, jalapeño, lettuce, tomato, banana peppers; Victor’s Zesty Sauce.", "price": null, "priceTier": 4, "tags": ["spicy"] },
       { "name": "The Chopped Sweet & Savory Vic", "desc": "Steak, crispy bacon, onions, cheddar, jalapeños; BBQ + ranch, served hot and chopped.", "price": null, "priceTier": 4, "tags": [] }
     ]
   },
 
   {
-    "category": "🥖 Build Your Own Sub",
+    "category": "Build Your Own Sub",
     "items": [
       {
         "name": "Build Your Own Sub",
@@ -39,7 +39,7 @@
   },
 
   {
-    "category": "🧊 Panini Sandwiches",
+    "category": "Panini Sandwiches",
     "items": [
       { "name": "The Classic Victor Panini", "desc": "Turkey, mozzarella, bacon, Victor’s Southern Gold Sauce on toasted panini bread.", "price": null, "priceTier": 4 },
       { "name": "Garlic Chicken Bacon Panini", "desc": "Grilled chicken, crispy bacon, mozzarella, grilled onions & mixed peppers, garlic mayo, Victor’s Zesty Sauce.", "price": null, "priceTier": 4 },
@@ -50,7 +50,7 @@
   },
 
   {
-    "category": "🍔 Burgers",
+    "category": "Burgers",
     "items": [
       { "name": "Victor’s Classic Double", "desc": "Two beef patties, American (yellow & white), lettuce, tomato, onions, pickles, Big Vic Sauce.", "price": null, "priceTier": 4 },
       { "name": "Victor’s Fantastic 4", "desc": "Four beef patties, American (yellow & white), lettuce, tomato, onions, pickles, Big Vic Sauce.", "price": null, "priceTier": 4 },
@@ -63,7 +63,7 @@
   },
 
   {
-    "category": "🍔 Build Your Own Burger",
+    "category": "Build Your Own Burger",
     "items": [
       {
         "name": "Build Your Own Burger",
@@ -82,7 +82,7 @@
   },
 
   {
-    "category": "🌯 Wraps",
+    "category": "Wraps",
     "items": [
       { "name": "Victor’s Grilled Chicken Caesar Wrap", "desc": "Grilled chicken, romaine, parmesan, Caesar dressing; warm tortilla.", "price": null, "priceTier": 4 },
       { "name": "Victor’s BBQ & Ranch Chicken Wrap", "desc": "Fried chicken strips, BBQ, ranch, American, lettuce, tomato, onions, pickles.", "price": null, "priceTier": 4 },
@@ -93,7 +93,7 @@
   },
 
   {
-    "category": "🌯 Build Your Own Wrap",
+    "category": "Build Your Own Wrap",
     "items": [
       {
         "name": "Build Your Own Wrap",
@@ -113,7 +113,7 @@
   },
 
   {
-    "category": "🍕 Pizza (Large Only)",
+    "category": "Pizza (Large Only)",
     "items": [
       { "name": "Victor’s Classic Cheese Pizza", "desc": "Tomato sauce, mozzarella, garlic sauce drizzle.", "price": null, "priceTier": 4 },
       { "name": "Victor’s Turkey Pepperoni Pizza", "desc": "Halal turkey pepperoni, tomato sauce, mozzarella, garlic sauce.", "price": null, "priceTier": 4 },
@@ -128,7 +128,7 @@
   },
 
   {
-    "category": "🍗 Wings",
+    "category": "Wings",
     "items": [
       { "name": "Wings (6)", "desc": "Choice of BBQ, Buffalo, Garlic Parmesan, Sweet & Sour, Nashville Hot, Mango Habanero. Ranch or blue cheese.", "price": 7.99 },
       { "name": "Wings (12)", "desc": "Choice of sauces; with dip.", "price": 13.99 },
@@ -137,7 +137,7 @@
   },
 
   {
-    "category": "🍟 Sides",
+    "category": "Sides",
     "items": [
       { "name": "Waffle Fries", "desc": "", "price": null, "priceTier": 4 },
       { "name": "Curly Fries", "desc": "", "price": null, "priceTier": 4 },
@@ -157,7 +157,7 @@
   },
 
   {
-    "category": "🥞 Breakfast — Croissant Sandwiches",
+    "category": "Breakfast: Croissant Sandwiches",
     "items": [
       { "name": "Bacon, Egg & Cheese Croissant", "desc": "Fried or scrambled egg, crispy bacon, American, chipotle ranch.", "price": null, "priceTier": null },
       { "name": "Sausage, Egg & American Croissant", "desc": "Toasted croissant, sausage patty, 2 eggs, American, chipotle ranch.", "price": null, "priceTier": null },
@@ -168,7 +168,7 @@
   },
 
   {
-    "category": "🍳 Breakfast — Burritos",
+    "category": "Breakfast: Burritos",
     "items": [
       { "name": "The Classic", "desc": "Scrambled eggs, bacon or sausage, American, breakfast potatoes, chipotle ranch.", "price": null },
       { "name": "The Meat Lover", "desc": "Eggs, bacon, sausage, fried chicken, American, potatoes, chipotle ranch.", "price": null },
@@ -178,7 +178,7 @@
   },
 
   {
-    "category": "🍳 Breakfast — Biscuits (Hotbox)",
+    "category": "Breakfast: Biscuits (Hotbox)",
     "items": [
       { "name": "Bacon, Egg & Cheese Biscuit", "desc": "Fried egg, crispy bacon, American.", "price": null },
       { "name": "Sausage, Egg & Cheese Biscuit", "desc": "Sausage patty, egg, American.", "price": null },
@@ -190,7 +190,7 @@
   },
 
   {
-    "category": "🥐 Create Your Own Breakfast Sandwich",
+    "category": "Create Your Own Breakfast Sandwich",
     "items": [
       {
         "name": "Build Your Own Breakfast",
@@ -210,7 +210,7 @@
   },
 
   {
-    "category": "🥞 Pancakes",
+    "category": "Pancakes",
     "items": [
       { "name": "Classic Stack", "desc": "2 or 3 buttermilk pancakes, butter & warm syrup.", "price": null },
       { "name": "Blueberry Bliss", "desc": "Pancakes with blueberries, powdered sugar & syrup.", "price": null },
@@ -219,7 +219,7 @@
   },
 
   {
-    "category": "🥤 Smoothies",
+    "category": "Smoothies",
     "items": [
       { "name": "Victor’s Strawberry Lime", "desc": "Strawberries, lime.", "price": null },
       { "name": "Victor’s Sunrise", "desc": "Orange juice, strawberries, pineapple, mango.", "price": null },
@@ -235,7 +235,7 @@
   },
 
   {
-    "category": "👶 Kids Menu",
+    "category": "Kids Menu",
     "items": [
       { "name": "Grilled Cheese", "desc": "", "price": null },
       { "name": "Turkey and Cheese", "desc": "", "price": null },
@@ -245,7 +245,7 @@
   },
 
   {
-    "category": "🧂 Sauces",
+    "category": "Sauces",
     "items": [
       { "name": "Big Vic Sauce", "desc": "House take on ‘Big Mac’ style sauce.", "price": null },
       { "name": "Vic Sauce", "desc": "Signature chicken dipping sauce — creamy, tangy, peppery.", "price": null },

@@ -3,6 +3,7 @@ import OrnateFrame from "@/components/OrnateFrame";
 import GoldButton from "@/components/GoldButton";
 import SectionLinkOverlay from "@/components/SectionLinkOverlay";
 
+
 export default function HomePage() {
   return (
     <div className="space-y-20">
@@ -100,31 +101,34 @@ export default function HomePage() {
 </OrnateFrame>
 
 
-      {/* INFO CARDS */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {[
-          { h: "Hours", p: "Mon–Sat: 8AM–7PM" },
-          { h: "Call", p: "(000) 000-0000" },
-          { h: "Visit", p: "Mena Plaza, Nashville, TN" },
-        ].map((c) => (
-          <div
-            key={c.h}
-            className="p-5 bg-cocoa-800/60 border-gold rounded-2xl text-center"
-          >
-          <h2 className="h-display title-section text-xl mb-2">{c.h}</h2>
-            <p className="text-amber-100/90">{c.p}</p>
-          </div>
-        ))}
-      </div>
+    {/* INFO CARDS */}
+<div className="grid md:grid-cols-3 gap-6">
+  {[
+    { h: "Hours", p: "Mon–Sat: 8AM–7PM" },
+    { h: "Call", p: "(615) 000-0000",  link: "tel:0000000000" },
+    { h: "Visit", p: "360 Wallace Rd, Nashville, TN 37211", link: "#visit" },
+  ].map((c) => (
+    <a
+      key={c.h}
+      href={c.link || "#"}
+      className={[
+        "p-5 bg-cocoa-800/60 border-gold rounded-2xl text-center",
+        "transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(212,175,55,0.1)]",
+        c.link ? "cursor-pointer" : "",
+      ].join(" ")}
+    >
+      <h2 className="h-display title-section text-xl mb-2">{c.h}</h2>
+      <p className="text-amber-100/90">{c.p}</p>
+    </a>
+  ))}
+</div>
+
       
-   {/* MENU SECTION */}
-<section
-  id="menu"
-  className="relative scroll-mt-20 space-y-8 py-10"
->
+{/* MENU SECTION (rows/grid) */}
+<section id="menu" className="relative scroll-mt-20 space-y-8 py-10">
   <SectionLinkOverlay href="/menu" label="Go to full Menu page" />
 
-    {/* Centered heading with gold lines beside it */}
+  {/* Centered heading with gold lines beside it */}
   <div className="flex items-center justify-center gap-6 text-center">
     <span className="h-[1px] w-24 md:w-40 bg-[var(--gold-primary)] opacity-60 rounded-full" />
     <h2 className="h-display subhead-gold text-3xl md:text-4xl tracking-wide uppercase">
@@ -133,18 +137,21 @@ export default function HomePage() {
     <span className="h-[1px] w-24 md:w-40 bg-[var(--gold-primary)] opacity-60 rounded-full" />
   </div>
 
-  {/* Menu items grid */}
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {/* Grid (rows) */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     {[
       { name: "Victor’s Chicken Bacon Ranch", price: "$12", img: "/chicken-bacon-ranch.jpg" },
-      { name: "Victor’s Spicy Chipotle Chicken", price: "$12", img: "/chipotle-chicken.jpg" },
-      { name: "Victor’s Classic Double Burger", price: "$13", img: "/testing.png" },
+      { name: "Spicy Chipotle Chicken",       price: "$12", img: "/chipotle-chicken.jpg" },
+      { name: "Classic Double Burger",        price: "$13", img: "/testing.png" },
+      { name: "Veggie Melt Croissant",        price: "$10", img: "/veggie-croissant.jpg" },
+      { name: "The Hot Chicken Burrito",      price: "$12", img: "/chicken-burrito.jpg" },
+      { name: "Chocolate Chip Pancakes",      price: "$9", img: "/pancakes.jpg" },
     ].map((i) => (
       <div
         key={i.name}
         className="rounded-2xl border border-gold/70 overflow-hidden bg-cocoa-900/50 shadow-[0_6px_20px_rgba(212,175,55,0.1)] hover:-translate-y-1 transition-transform duration-300"
       >
-        <div className="relative h-52 sm:h-56 md:h-64">
+        <div className="relative aspect-[4/3]">
           <Image src={i.img} alt={i.name} fill className="object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,14,10,0.75)] via-transparent to-transparent" />
           <div className="absolute bottom-0 left-0 w-full px-5 py-3 bg-[rgba(26,14,10,0.85)] border-t border-[rgba(212,175,55,0.25)]">
@@ -160,6 +167,19 @@ export default function HomePage() {
         </div>
       </div>
     ))}
+  </div>
+
+  {/* View full menu CTA */}
+  <div className="text-center">
+    <a
+      href="/menu"
+      className="inline-flex items-center gap-2 rounded-xl border border-gold/70 bg-black/10 px-4 py-2 text-sm text-amber-100/90 hover:bg-white/5 hover:border-gold transition"
+    >
+      View Full Menu
+      <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <path d="M5 12h14" /><path d="m13 5 7 7-7 7" />
+      </svg>
+    </a>
   </div>
 </section>
 
@@ -247,6 +267,30 @@ export default function HomePage() {
   <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 ring-[--gold-primary]/0 transition duration-300 group-hover:ring-2 group-hover:ring-[--gold-primary]/25" />
 </section>
 
+{/* SOCIAL PROOF */}
+<section className="text-center space-y-4">
+  <div className="flex items-center justify-center gap-6">
+    <span className="h-[1px] w-16 bg-[var(--gold-primary)] opacity-50 rounded-full" />
+    <h3 className="h-display subhead-gold text-2xl uppercase">What Folks Say</h3>
+    <span className="h-[1px] w-16 bg-[var(--gold-primary)] opacity-50 rounded-full" />
+  </div>
+  <div className="grid md:grid-cols-3 gap-4">
+    {[
+      "“Tastes like home - can’t wait for the opening.”",
+      "“Real deli energy. The bread? Unreal.”",
+      "“You can feel the heart behind this.”",
+    ].map((q) => (
+      <blockquote
+        key={q}
+        className="rounded-xl border border-gold/50 bg-black/10 p-4 text-amber-100/90 italic"
+      >
+        {q}
+      </blockquote>
+    ))}
+  </div>
+</section>
+
+
 
     {/* VISIT SECTION */}
 <section
@@ -286,6 +330,67 @@ export default function HomePage() {
     ></iframe>
   </a>
 </section>
+
+{/* CONTACT BAND */}
+<section className="relative rounded-2xl border-gold overflow-hidden">
+  {/* soft gold background glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(600px_240px_at_50%_-20%,rgba(212,175,55,0.10),transparent)]" />
+
+  <div className="relative p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left">
+    <div>
+      <h3 className="h-display subhead-gold text-2xl md:text-3xl">
+        Contact Us
+      </h3>
+      <p className="text-amber-100/80 text-sm md:text-base mt-1">
+        We’d love to hear from you - reach out anytime.
+      </p>
+    </div>
+
+   <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=delibyvic@gmail.com&su=Inquiry%20from%20Victor%E2%80%99s%20Deli%20Website&body=Hi%20Victor%2C%0A%0A"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 rounded-xl border border-gold bg-black/20 px-5 py-2.5 text-sm md:text-base text-amber-100/90 hover:bg-white/5 hover:border-gold transition"
+>
+  Email Us
+  <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <path d="M4 4h16v16H4z" stroke="none" />
+    <path d="M4 4l8 7 8-7" />
+  </svg>
+</a>
+  </div>
+</section>
+
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Victor’s Classic Deli",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "360 Wallace Rd",
+        "addressLocality": "Nashville",
+        "addressRegion": "TN",
+        "postalCode": "37211",
+        "addressCountry": "US"
+      },
+      "telephone": "+16150000000", /* Update with actual PHONE */
+      "servesCuisine": ["Deli", "American"],
+      "url": "https://deli-site-omega.vercel.app/", /* Update with actual URL */
+      "priceRange": "$$",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      }]
+    })
+  }}
+/>
+
 
     </div>
   );
