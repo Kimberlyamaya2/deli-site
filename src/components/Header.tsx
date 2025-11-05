@@ -20,9 +20,9 @@ export default function Header() {
 
   // Lock scroll when mobile menu is open
   useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
+     document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.documentElement.style.overflow = "";
+     document.body.style.overflow = "";
     };
   }, [open]);
 
@@ -47,7 +47,7 @@ export default function Header() {
       </a>
 
       {/* HEADER */}
-      <header className="sticky top-0 z-40 bg-cocoa-900/80 backdrop-blur border-b border-gold-700 supports-[backdrop-filter]:bg-cocoa-900/60">
+      <header className="sticky top-0 z-40 relative bg-cocoa-900/80 backdrop-blur border-b border-gold-700 supports-[backdrop-filter]:bg-cocoa-900/60">
         <div className="w-full flex items-center justify-between py-3 px-3 md:px-6">
           {/* LOGO + NAME */}
           <Link href="/" className="flex items-center gap-3">
@@ -112,16 +112,16 @@ export default function Header() {
         {/* MOBILE NAV PANEL */}
         {open && (
           <>
-            {/* Overlay */}
+           {/* Overlay (covers page) */}
             <button
               aria-hidden
               tabIndex={-1}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-30 bg-black/40 md:hidden"
+              className="fixed inset-0 z-40 bg-black/40 md:hidden"
             />
             <nav
               id="mobile-nav"
-              className="md:hidden z-40 border-t border-gold-700 bg-cocoa-900/95 backdrop-blur"
+              className="md:hidden absolute top-full left-0 right-0 z-50 border-t border-gold-700 bg-cocoa-900/95 backdrop-blur"
               aria-label="Mobile Primary"
             >
               <ul className="w-full px-3 md:px-6 py-3 space-y-1">

@@ -138,7 +138,7 @@ export default function HomePage() {
   </div>
 
   {/* Grid (rows) */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
     {[
       { name: "Victor’s Chicken Bacon Ranch", price: "$12", img: "/chicken-bacon-ranch.jpg" },
       { name: "Spicy Chipotle Chicken",       price: "$12", img: "/chipotle-chicken.jpg" },
