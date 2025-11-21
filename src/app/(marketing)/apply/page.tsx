@@ -21,15 +21,40 @@ export default function ApplyPage() {
           </p>
         </header>
 
-        {/* APPLICATION FORM FRAME */}
-<div className="rounded-2xl border border-gold/60 bg-black/10 shadow-[0_6px_24px_rgba(212,175,55,0.12)] overflow-hidden backdrop-blur-sm">
-  <div className="relative w-full" style={{ paddingTop: "70%" }}>
+       {/* APPLICATION FORM FRAME */}
+<div className="
+  rounded-2xl border border-gold/60 bg-black/10 
+  shadow-[0_6px_24px_rgba(212,175,55,0.12)] 
+  backdrop-blur-sm 
+  overflow-hidden
+">
+  <div className="
+    w-full 
+    h-[50vh]         /* responsive height (75% of any screen) */
+    md:h-[45vh]      /* on tablets/desktop, slightly taller */
+    lg:h-[45vh] 
+    overflow-y-scroll
+    scrollbar-thin scrollbar-thumb-[#d4af37]/40 scrollbar-track-transparent
+  ">
     <iframe
       src="https://docs.google.com/forms/d/e/1FAIpQLSdInrwGuExWK5HWopJAnhmE6y87h10OcLlqEoGurR6BkFnS-w/viewform?embedded=true"
-      className="absolute inset-0 w-full h-full border-none"
+      className="w-full h-full border-none"
       loading="lazy"
     />
   </div>
+</div>
+
+
+{/* MOBILE FALLBACK */}
+<div className="md:hidden mt-4 text-center">
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSdInrwGuExWK5HWopJAnhmE6y87h10OcLlqEoGurR6BkFnS-w/viewform"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block px-4 py-2 rounded-lg border border-gold/60 bg-black/20 text-gold-200"
+  >
+    Open Form Instead
+  </a>
 </div>
 
 

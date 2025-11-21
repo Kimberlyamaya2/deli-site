@@ -47,16 +47,16 @@ export default function Header() {
       </a>
 
       {/* HEADER BAR */}
-      <header
-        className="
-          sticky top-0 z-50
-          border-b border-gold-700
-          bg-cocoa-900
-          md:bg-cocoa-900/80
-          md:backdrop-blur
-          md:supports-[backdrop-filter]:bg-cocoa-900/60
-        "
-      >
+     <header
+  className="
+    sticky top-0 z-50
+    border-b border-gold-700
+    bg-cocoa-900/95
+    backdrop-blur-md
+    supports-[backdrop-filter]:bg-cocoa-900/75
+  "
+>
+
         <div className="w-full flex items-center justify-between py-3 px-3 md:px-6">
           {/* LOGO + NAME */}
           <Link href="/" className="flex items-center gap-3">

@@ -28,16 +28,22 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body  className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-cocoa-900 text-[15px] text-amber-50 bg-brown-radial`}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-cocoa-900 text-[15px] text-amber-50 bg-brown-radial`}
       >
         <div className="min-h-screen flex flex-col">
+
           <Header />
-          <main className="flex-1 w-full px-3 md:px-6 py-10">
-  {children}
-</main>
+
+          {/* Add header spacing HERE */}
+          <main className="flex-1 w-full px-3 md:px-6 pt-28 pb-10">
+            {children}
+          </main>
+
           <Footer />
         </div>
       </body>
     </html>
   );
 }
+

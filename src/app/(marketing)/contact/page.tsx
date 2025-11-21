@@ -33,12 +33,12 @@ export default function ContactPage() {
                 360 Wallace Rd<br />
                 Nashville, TN 37211
               </p>
-              <a
-                href="https://www.google.com/maps/place/360+Wallace+Rd,+Nashville,+TN+37211"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex text-xs md:text-sm text-gold-200/90 hover:text-gold-100 underline underline-offset-4"
-              >
+              <a 
+  href="https://www.google.com/maps/search/?api=1&query=360+Wallace+Rd+Nashville+TN"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+
                 Open in Google Maps
               </a>
             </div>
