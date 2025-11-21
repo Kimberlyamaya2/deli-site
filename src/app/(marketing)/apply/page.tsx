@@ -32,6 +32,7 @@ export default function ApplyPage() {
           </div>
         </div>
 
+
          {/* WHY WORK HERE */}
         <div className="grid gap-4 md:grid-cols-3 text-sm md:text-base text-amber-100/90">
           <div className="rounded-xl border border-gold/40 bg-black/10 p-4">
