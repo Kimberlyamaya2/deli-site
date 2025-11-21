@@ -1,5 +1,3 @@
-import GoldButton from "@/components/GoldButton";
-
 export default function ContactPage() {
   return (
     <section className="relative scroll-mt-20 text-amber-100">

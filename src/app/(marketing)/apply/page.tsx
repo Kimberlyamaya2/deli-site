@@ -17,7 +17,7 @@ export default function ApplyPage() {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-amber-200/85 max-w-2xl mx-auto">
-            We're looking for motivated, friendly team members who care about great food and great people.
+            We&apos;re looking for motivated, friendly team members who care about great food and great people.
           </p>
         </header>
 
@@ -58,8 +58,8 @@ export default function ApplyPage() {
 
         {/* FOOTNOTE */}
         <p className="text-center text-amber-100/70 text-sm">
-          Once you submit your application, we’ll review it and reach out if you’re a good fit.
-        </p>
+  Once you submit your application, we&apos;ll review it and reach out if you&apos;re a good fit.
+</p>
 
       </div>
     </section>
