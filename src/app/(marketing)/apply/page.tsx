@@ -22,15 +22,16 @@ export default function ApplyPage() {
         </header>
 
         {/* APPLICATION FORM FRAME */}
-        <div className="rounded-2xl border border-gold/60 bg-black/10 shadow-[0_6px_24px_rgba(212,175,55,0.12)] overflow-hidden backdrop-blur-sm">
-          <div className="relative w-full" style={{ paddingTop: "135%" }}>
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSdInrwGuExWK5HWopJAnhmE6y87h10OcLlqEoGurR6BkFnS-w/viewform?embedded=true"
-              className="absolute inset-0 w-full h-full border-none"
-              loading="lazy"
-            />
-          </div>
-        </div>
+<div className="rounded-2xl border border-gold/60 bg-black/10 shadow-[0_6px_24px_rgba(212,175,55,0.12)] overflow-hidden backdrop-blur-sm">
+  <div className="relative w-full" style={{ paddingTop: "70%" }}>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdInrwGuExWK5HWopJAnhmE6y87h10OcLlqEoGurR6BkFnS-w/viewform?embedded=true"
+      className="absolute inset-0 w-full h-full border-none"
+      loading="lazy"
+    />
+  </div>
+</div>
+
 
 
          {/* WHY WORK HERE */}
