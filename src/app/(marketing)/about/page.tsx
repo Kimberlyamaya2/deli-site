@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutPage() {
   return (
     <section className="relative scroll-mt-20 text-amber-100">
@@ -30,21 +32,23 @@ export default function AboutPage() {
           {/* narrative column */}
           <article className="prose prose-invert prose-amber max-w-none text-[1.05rem] leading-relaxed">
             <p>
-              <strong>Victor’s Classic Deli</strong> isn’t just a menu—it’s a tribute to a bond that became family.
+              <strong>Victor’s Classic Deli</strong> isn’t just a menu, it’s a tribute to a bond that became family.
               Two best friends who turned long shifts into lifelong stories, and one promise that became a mission.
             </p>
+            <p className="mb-4">  </p>
             <p>
               Victor built this place for <strong>Niraj</strong>, a chef who once ran two beloved Chicago spots and
-              had a way of bringing people together with heart and hustle. When life pulled him from the kitchen, he
-              left Victor with simple instructions—the ones you read above.
+              had a way of bringing people together with heart and hustle. Before Niraj passed, he told Victor: 
+              <em>“If you ever open a place, make it a classic. Make it yours. And make it matter.”</em>
             </p>
+            <p className="mb-4"></p>
             <p>
               After Niraj’s passing, that message became Victor’s vow. It’s why the lights flip on early, why the
               bread gets checked twice, why the sauce is tasted again, and why everyone who walks in is greeted like
               family.
             </p>
             <p>
-              This isn’t fast food. It’s food that <em>means</em> something—made with care, served with gratitude,
+              This isn’t fast food. It’s food that <em>means</em> something, made with care, served with gratitude,
               and tied to a promise that refuses to fade.
             </p>
 
@@ -53,62 +57,51 @@ export default function AboutPage() {
 
             <p>
               If you’re here, you’re part of it. Every order helps carry a legacy forward. Every visit keeps a
-              brother’s promise alive. From the first sizzle on the flat-top to the last smile at the counter—
+              brother’s promise alive. From the first sizzle on the flattop to the last smile at the counter,
               we’re making it matter.
             </p>
           </article>
 
-          {/* sticky photo card (placeholder now, easy swap later) */}
-          <aside className="lg:sticky lg:top-24">
-            <div className="relative rounded-2xl border border-gold/70 bg-cocoa-900/60 shadow-[0_6px_24px_rgba(212,175,55,0.15)] overflow-hidden">
-              {/* Placeholder box — swap with an <Image /> when ready */}
-              <div className="aspect-[4/3] grid place-items-center">
-                <div className="w-[82%] h-[78%] rounded-xl border-2 border-dashed border-gold/60 grid place-items-center text-center px-6">
-                  <div>
-                    <p className="font-medium text-amber-100/85">Add a photo here</p>
-                    <p className="text-amber-100/60 text-sm mt-1">
-                      Victor &amp; Niraj, a keepsake, or the first recipe card.
-                    </p>
-                  </div>
-                </div>
-              </div>
+    {/* sticky photo card */}
+<aside className="lg:sticky lg:top-24">
+  <div className="mx-auto w-full max-w-md rounded-2xl border border-gold/70 bg-cocoa-900/60 shadow-[0_8px_28px_rgba(212,175,55,0.15)] overflow-hidden">
 
-              {/* caption */}
-              <div className="px-5 py-3 bg-[rgba(26,14,10,0.85)] border-t border-[rgba(212,175,55,0.25)]">
-                <p className="text-amber-100/90 text-sm">
-                  A promise kept. A legacy served warm.
-                </p>
-              </div>
-            </div>
+    {/* photo */}
+    <div className="relative aspect-[4/3] overflow-hidden bg-black/40">
+      <Image
+        src="/OriginalPhoto.PNG"
+        alt="Victor & Niraj — a brotherhood remembered"
+        fill
+       className="object-cover object-[center_5%] saturate-[1.15] contrast-[1.1]"
 
-            {/* HOW TO SWAP (comment in your codebase) */}
-            {/*
-            import Image from "next/image";
-            <Image
-              src="/about-hero.jpg"
-              alt="Victor & Niraj — a brotherhood remembered"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-            Remove the dashed placeholder div above and keep the caption.
-            */}
-          </aside>
+        priority
+      />
+    </div>
+
+    {/* caption */}
+    <div className="px-5 py-3 bg-[rgba(26,14,10,0.85)] border-t border-[rgba(212,175,55,0.25)]">
+      <p className="text-amber-100/90 text-sm">
+        A promise kept. A legacy served warm.
+      </p>
+    </div>
+  </div>
+</aside>
+
         </div>
       </div>
 
-      {/* FULL-BLEED PROMISE BAND */}
-      <div className="relative mt-14 md:mt-18">
-        <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-16">
-          <div className="rounded-2xl border border-gold/70 bg-black/15 p-5 md:p-6 text-center shadow-[0_6px_20px_rgba(212,175,55,0.10)]">
-            <p className="text-lg md:text-xl font-semibold text-[var(--gold-primary)] tracking-wide">
-              Come hungry. Leave inspired. Come back like you never left.
-            </p>
-          </div>
-        </div>
-      </div>
 
-      {/* MILESTONES */}
+ <div className="mt-16 flex items-center justify-center gap-3">
+  <span className="h-[1px] w-16 bg-[var(--gold-primary)]/40 rounded-full"></span>
+  <span className="text-gold-200 text-lg tracking-widest uppercase">
+    — Legacy —
+  </span>
+  <span className="h-[1px] w-16 bg-[var(--gold-primary)]/40 rounded-full"></span>
+</div>
+
+
+
+ {/* MILESTONES */}
       <div className="relative max-w-6xl mx-auto px-6 md:px-10 lg:px-16 mt-10 md:mt-12">
         <ol className="grid gap-4 md:grid-cols-3">
           {[
@@ -132,6 +125,34 @@ export default function AboutPage() {
           ))}
         </ol>
       </div>
+
+     {/* MINI SECTION DIVIDER WITH CARTOON + TEXT */}
+<div className="relative max-w-5xl mx-auto px-6 md:px-10 lg:px-16 mt-24 mb-14">
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+
+    {/* Cartoon - clean, circle, no box */}
+    <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden shadow-[0_4px_14px_rgba(0,0,0,0.45)] bg-black/20">
+      <Image
+        src="/Cartoon.png"
+        alt="Illustration of Victor and Niraj"
+        fill
+        className="object-cover"
+      />
+    </div>
+
+    {/* Text */}
+    <div className="text-center sm:text-left">
+      <p className="text-xl md:text-2xl font-semibold text-gold-200 leading-snug">
+        Come hungry. Leave inspired.
+      </p>
+      <p className="text-xl md:text-2xl font-semibold text-gold-200 leading-snug">
+        <span className="text-gold-100/90">Come back like you never left.</span>
+      </p>
+    </div>
+
+  </div>
+</div>
+
 
       {/* CTA */}
       <div className="relative max-w-6xl mx-auto px-6 md:px-10 lg:px-16 mt-12 md:mt-14 pb-16">
