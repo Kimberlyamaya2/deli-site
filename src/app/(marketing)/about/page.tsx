@@ -69,8 +69,8 @@ export default function AboutPage() {
     {/* photo */}
     <div className="relative aspect-[4/3] overflow-hidden bg-black/40">
       <Image
-        src="/OriginalPhoto.PNG"
-        alt="Victor & Niraj — a brotherhood remembered"
+        src="/Cartoon.PNG"
+        alt="Cartoon Victor & Niraj — a brotherhood remembered"
         fill
        className="object-cover object-[center_5%] saturate-[1.15] contrast-[1.1]"
 
@@ -130,7 +130,8 @@ export default function AboutPage() {
 <div className="relative max-w-5xl mx-auto px-6 md:px-10 lg:px-16 mt-24 mb-14">
   <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
 
-    {/* Cartoon - clean, circle, no box */}
+
+   {/* Cartoon - clean, circle, no box
     <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden shadow-[0_4px_14px_rgba(0,0,0,0.45)] bg-black/20">
       <Image
         src="/Cartoon.png"
@@ -139,6 +140,7 @@ export default function AboutPage() {
         className="object-cover"
       />
     </div>
+     */}
 
     {/* Text */}
     <div className="text-center sm:text-left">
