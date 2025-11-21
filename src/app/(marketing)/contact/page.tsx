@@ -2,14 +2,18 @@
 
 import { FormEvent, useState } from "react";
 
+type Status = "idle" | "success" | "error";
+
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     setStatus("idle");
+    setErrorMessage(null);
 
     const formData = new FormData(e.currentTarget);
 
@@ -26,8 +30,10 @@ export default function ContactPage() {
         }),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to send");
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Failed to send");
       }
 
       setStatus("success");
@@ -35,6 +41,9 @@ export default function ContactPage() {
     } catch (err) {
       console.error(err);
       setStatus("error");
+      setErrorMessage(
+        err instanceof Error ? err.message : "Something went wrong."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -101,7 +110,6 @@ export default function ContactPage() {
                 <h3 className="text-gold-200 text-sm font-semibold mb-1">
                   Email
                 </h3>
-                {/* This link is fine to open email app if they tap the address itself */}
                 <a
                   href="mailto:delibyvic@gmail.com"
                   className="text-sm md:text-base text-amber-100/90 hover:text-gold-100 break-all"
@@ -206,7 +214,7 @@ export default function ContactPage() {
                   )}
                   {status === "error" && (
                     <span className="text-red-300">
-                      Something went wrong. Please try again.
+                      {errorMessage || "Something went wrong. Please try again."}
                     </span>
                   )}
                 </div>

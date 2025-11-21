@@ -1,3 +1,4 @@
+// src/app/api/send/route.ts
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -6,16 +7,16 @@ export async function POST(request: Request) {
   try {
     if (!process.env.RESEND_API_KEY) {
       console.error("Missing RESEND_API_KEY");
-      return new Response(
-        JSON.stringify({ error: "Missing RESEND_API_KEY" }),
+      return Response.json(
+        { success: false, error: "Missing RESEND_API_KEY" },
         { status: 500 }
       );
     }
 
-    const { name, reason, message, email, phone } = await request.json();
+    const { name, email, phone, reason, message } = await request.json();
 
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev",   // keep this simple while testing
+      from: "onboarding@resend.dev", // keep simple & valid
       to: "delibyvic@gmail.com",
       subject: "New Contact Form Message",
       html: `
@@ -24,17 +25,18 @@ export async function POST(request: Request) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone ?? "N/A"}</p>
         <p><strong>Reason:</strong> ${reason}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
       `,
     });
 
     console.log("Resend response:", data);
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return Response.json({ success: true });
   } catch (error) {
     console.error("Resend error:", error);
-    return new Response(
-      JSON.stringify({ error: "Error sending email" }),
+    return Response.json(
+      { success: false, error: "Error sending email" },
       { status: 500 }
     );
   }
