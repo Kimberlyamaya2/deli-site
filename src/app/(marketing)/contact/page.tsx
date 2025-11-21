@@ -10,44 +10,47 @@ export default function ContactPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setStatus("idle");
-    setErrorMessage(null);
+  e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+  const form = e.currentTarget; // 👈 keep a reference to the form
 
-    try {
-      const res = await fetch("/api/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          reason: formData.get("reason"),
-          message: formData.get("message"),
-        }),
-      });
+  setSubmitting(true);
+  setStatus("idle");
+  setErrorMessage(null);
 
-      const json = await res.json().catch(() => ({}));
+  const formData = new FormData(form);
 
-      if (!res.ok || !json.success) {
-        throw new Error(json.error || "Failed to send");
-      }
+  try {
+    const res = await fetch("/api/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        reason: formData.get("reason"),
+        message: formData.get("message"),
+      }),
+    });
 
-      setStatus("success");
-      e.currentTarget.reset();
-    } catch (err) {
-      console.error(err);
-      setStatus("error");
-      setErrorMessage(
-        err instanceof Error ? err.message : "Something went wrong."
-      );
-    } finally {
-      setSubmitting(false);
+    const json = await res.json().catch(() => ({}));
+
+    if (!res.ok || !json.success) {
+      throw new Error(json.error || "Failed to send");
     }
-  };
+
+    setStatus("success");
+    form.reset(); // 👈 use the saved form, not e.currentTarget
+  } catch (err) {
+    console.error(err);
+    setStatus("error");
+    setErrorMessage(
+      err instanceof Error ? err.message : "Something went wrong."
+    );
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   return (
     <section className="relative scroll-mt-20 text-amber-100">
