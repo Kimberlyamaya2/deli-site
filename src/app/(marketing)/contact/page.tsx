@@ -1,4 +1,45 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+
 export default function ContactPage() {
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setStatus("idle");
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          reason: formData.get("reason"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setStatus("success");
+      e.currentTarget.reset();
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative scroll-mt-20 text-amber-100">
       {/* soft background glow */}
@@ -16,13 +57,13 @@ export default function ContactPage() {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-amber-200/85 max-w-2xl mx-auto">
-            Questions, feedback, or just saying hello - we’d love to hear from you.
+            Questions, feedback, or just saying hello – we’d love to hear from you.
           </p>
         </header>
 
         {/* INFO + FORM */}
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
-          {/* INFO COLUMN – echoes home info cards + visit section */}
+          {/* INFO COLUMN */}
           <aside className="space-y-5 rounded-2xl border border-gold/70 bg-black/10 p-6 md:p-7 shadow-[0_6px_24px_rgba(212,175,55,0.12)] backdrop-blur-sm">
             <div>
               <h2 className="h-display title-section text-xl mb-1 text-gold-200">
@@ -33,12 +74,12 @@ export default function ContactPage() {
                 360 Wallace Rd<br />
                 Nashville, TN 37211
               </p>
-              <a 
-  href="https://www.google.com/maps/search/?api=1&query=360+Wallace+Rd+Nashville+TN"
-  target="_blank"
-  rel="noopener noreferrer"
->
-
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=360+Wallace+Rd+Nashville+TN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex text-xs md:text-sm text-gold-200/90 hover:text-gold-100 underline underline-offset-4"
+              >
                 Open in Google Maps
               </a>
             </div>
@@ -60,11 +101,9 @@ export default function ContactPage() {
                 <h3 className="text-gold-200 text-sm font-semibold mb-1">
                   Email
                 </h3>
+                {/* This link is fine to open email app if they tap the address itself */}
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=delibyvic@gmail.com&su=Inquiry%20from%20Victor%E2%80%99s%20Deli%20Website&body=Hi%20Victor%2C%0A%0A"
-  target="_blank"
-  rel="noopener noreferrer"
-  
+                  href="mailto:delibyvic@gmail.com"
                   className="text-sm md:text-base text-amber-100/90 hover:text-gold-100 break-all"
                 >
                   delibyvic@gmail.com
@@ -83,9 +122,9 @@ export default function ContactPage() {
             </div>
           </aside>
 
-          {/* FORM COLUMN – styled like the rest of the site */}
+          {/* FORM COLUMN */}
           <div className="rounded-2xl border border-gold/60 bg-black/10 p-6 md:p-7 shadow-[0_6px_24px_rgba(212,175,55,0.12)]">
-            <form className="space-y-4" method="post">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label className="block text-xs font-semibold tracking-wide uppercase text-amber-200/80 mb-1.5">
@@ -157,26 +196,54 @@ export default function ContactPage() {
                 />
               </div>
 
-             <div className="flex justify-end pt-3">
-  <a
-    href={`mailto:delibyvic@gmail.com?subject=Inquiry from Victor’s Classic Deli&body=Hi%20Victor,%0A%0AMy%20name%20is:%0AReason:%0AMessage:%0A%0A`}
-    className="inline-flex items-center gap-2 rounded-xl border border-[rgba(212,175,55,0.75)] bg-black/20 px-5 py-2.5 text-sm md:text-base text-amber-100/90 hover:bg-white/5 hover:border-gold transition shadow-[0_8px_20px_rgba(212,175,55,0.18)] hover:shadow-[0_10px_24px_rgba(212,175,55,0.26)]"
-  >
-    Send Message
-    <svg
-      aria-hidden
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 5 7 7-7 7" />
-    </svg>
-  </a>
-</div>
+              <div className="flex items-center justify-between pt-3 gap-3 flex-wrap">
+                {/* status text */}
+                <div className="text-xs md:text-sm min-h-[1.5rem]">
+                  {status === "success" && (
+                    <span className="text-emerald-300">
+                      Message sent! We’ll get back to you soon.
+                    </span>
+                  )}
+                  {status === "error" && (
+                    <span className="text-red-300">
+                      Something went wrong. Please try again.
+                    </span>
+                  )}
+                </div>
 
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="inline-flex items-center gap-2 rounded-xl border border-[rgba(212,175,55,0.75)] bg-black/20 px-5 py-2.5 text-sm md:text-base text-amber-100/90 hover:bg-white/5 hover:border-gold transition shadow-[0_8px_20px_rgba(212,175,55,0.18)] hover:shadow-[0_10px_24px_rgba(212,175,55,0.26)] disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Sending..." : "Send Message"}
+                  {submitting ? (
+                    <svg
+                      aria-hidden
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4 animate-spin"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <circle cx="12" cy="12" r="9" className="opacity-30" />
+                      <path d="M21 12a9 9 0 0 0-9-9" />
+                    </svg>
+                  ) : (
+                    <svg
+                      aria-hidden
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m13 5 7 7-7 7" />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </form>
           </div>
         </div>
