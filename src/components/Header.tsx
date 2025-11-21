@@ -20,9 +20,9 @@ export default function Header() {
 
   // Lock scroll when mobile menu is open
   useEffect(() => {
-     document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-     document.body.style.overflow = "";
+      document.body.style.overflow = "";
     };
   }, [open]);
 
@@ -46,8 +46,17 @@ export default function Header() {
         Skip to content
       </a>
 
-      {/* HEADER */}
-      <header className="sticky top-0 z-40 relative bg-cocoa-900/80 backdrop-blur border-b border-gold-700 supports-[backdrop-filter]:bg-cocoa-900/60">
+      {/* HEADER BAR */}
+      <header
+        className="
+          sticky top-0 z-50
+          border-b border-gold-700
+          bg-cocoa-900
+          md:bg-cocoa-900/80
+          md:backdrop-blur
+          md:supports-[backdrop-filter]:bg-cocoa-900/60
+        "
+      >
         <div className="w-full flex items-center justify-between py-3 px-3 md:px-6">
           {/* LOGO + NAME */}
           <Link href="/" className="flex items-center gap-3">
@@ -95,61 +104,86 @@ export default function Header() {
                        focus:outline-none focus:ring-2 focus:ring-[var(--gold-primary)]/60"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            aria-controls="mobile-nav"
           >
             {open ? (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              >
                 <path d="M18 6 6 18M6 6l12 12" />
               </svg>
             ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              >
                 <path d="M3 6h18M3 12h18M3 18h18" />
               </svg>
             )}
           </button>
         </div>
-
-        {/* MOBILE NAV PANEL */}
-        {open && (
-          <>
-           {/* Overlay (covers page) */}
-            <button
-              aria-hidden
-              tabIndex={-1}
-              onClick={() => setOpen(false)}
-              className="fixed inset-0 z-40 bg-black/40 md:hidden"
-            />
-            <nav
-              id="mobile-nav"
-              className="md:hidden absolute top-full left-0 right-0 z-50 border-t border-gold-700 bg-cocoa-900/95 backdrop-blur"
-              aria-label="Mobile Primary"
-            >
-              <ul className="w-full px-3 md:px-6 py-3 space-y-1">
-                {links.map((l) => {
-                  const active = pathname === l.href;
-                  return (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        aria-current={active ? "page" : undefined}
-                        className={[
-                          "block rounded-md px-2 py-2 transition",
-                          active
-                            ? "text-gold-200 bg-black/20"
-                            : "text-amber-100 hover:text-gold-200 hover:bg-black/10",
-                        ].join(" ")}
-                        onClick={() => setOpen(false)}
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-          </>
-        )}
       </header>
+
+      {/* MOBILE DRAWER */}
+{open && (
+  <>
+    {/* Dim background */}
+    <button
+      aria-hidden
+      tabIndex={-1}
+      onClick={() => setOpen(false)}
+      className="fixed inset-0 z-40 bg-black/60 md:hidden"
+    />
+
+    {/* Drawer panel */}
+    <nav
+      id="mobile-nav"
+      aria-label="Mobile Primary"
+      className="
+        fixed inset-y-0 right-0 z-50 md:hidden
+        w-4/5 max-w-xs
+        bg-gradient-to-b from-[#27160d] to-[#110807]
+        border-l border-gold-700
+        shadow-[0_0_40px_rgba(0,0,0,0.65)]
+        px-4 py-5
+        flex flex-col
+      "
+    >
+      <ul className="space-y-1">
+        {links.map((l) => {
+          const active = pathname === l.href;
+          return (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                onClick={() => setOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={[
+                  "flex items-center justify-between rounded-md px-2 py-2 text-base tracking-wide transition",
+                  active
+                    ? "text-gold-200 bg-cocoa-800/70 border border-gold/40"
+                    : "text-amber-100 hover:text-gold-200 hover:bg-cocoa-800/40",
+                ].join(" ")}
+              >
+                <span>{l.label}</span>
+                <span className="text-gold-300 text-sm">&#8250;</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </>
+)}
+
 
       {/* Skip-link anchor */}
       <div id="main" />
