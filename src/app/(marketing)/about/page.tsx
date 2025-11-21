@@ -69,7 +69,7 @@ export default function AboutPage() {
     {/* photo */}
     <div className="relative aspect-[4/3] overflow-hidden bg-black/40">
       <Image
-        src="/Cartoon.PNG"
+        src="/Cartoon.png"
         alt="Cartoon Victor & Niraj — a brotherhood remembered"
         fill
        className="object-cover object-[center_5%] saturate-[1.15] contrast-[1.1]"
