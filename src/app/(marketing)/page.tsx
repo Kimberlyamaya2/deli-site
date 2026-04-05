@@ -21,7 +21,7 @@ export default function HomePage() {
   >
     {/* Left: headline + actions */}
     <div className="space-y-5 max-w-xl">
-      <div className="inline-flex items-center gap-2 rounded-full border border-gold/60 bg-cocoa-800/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-gold-200/90">
+      <div className="inline-flex items-center gap-2 rounded-full border border-gold/60 bg-white/70 backdrop-blur-sm px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-gold-200/90">
         Est. 2025 • Classic Deli
       </div>
 
@@ -118,7 +118,7 @@ export default function HomePage() {
       ].join(" ")}
     >
       <h2 className="h-display title-section text-xl mb-2">{c.h}</h2>
-      <p className="text-amber-100/90">{c.p}</p>
+      <p className="text-[#3b2a1f]">{c.p}</p>
     </a>
   ))}
 </div>
@@ -149,7 +149,7 @@ export default function HomePage() {
     ].map((i) => (
       <div
         key={i.name}
-        className="rounded-2xl border border-gold/70 overflow-hidden bg-cocoa-900/50 shadow-[0_6px_20px_rgba(212,175,55,0.1)] hover:-translate-y-1 transition-transform duration-300"
+        className="rounded-2xl border border-gold/70 overflow-hidden bg-white/80 shadow-[0_6px_20px_rgba(212,175,55,0.1)] hover:-translate-y-1 transition-transform duration-300"
       >
         <div className="relative aspect-[4/3]">
           <Image src={i.img} alt={i.name} fill className="object-cover object-center" />
@@ -173,7 +173,7 @@ export default function HomePage() {
   <div className="text-center">
     <a
       href="/menu"
-      className="inline-flex items-center gap-2 rounded-xl border border-gold/70 bg-black/10 px-4 py-2 text-sm text-amber-100/90 hover:bg-white/5 hover:border-gold transition"
+      className="inline-flex items-center gap-2 rounded-xl border border-gold/70 bg-white/50 px-4 py-2 text-sm text-[#3b2a1f] hover:bg-white/5 hover:border-gold transition"
     >
       View Full Menu
       <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -209,7 +209,7 @@ export default function HomePage() {
       </div>
 
       {/* status badge */}
-      <span className="shrink-0 rounded-full border border-gold/70 px-3 py-1 text-xs tracking-wide text-amber-100/90 bg-black/20 shadow-[0_0_0_1px_rgba(212,175,55,0.15)_inset]">
+      <span className="shrink-0 rounded-full border border-gold/70 px-3 py-1 text-xs tracking-wide text-[#3b2a1f] bg-black/20 shadow-[0_0_0_1px_rgba(212,175,55,0.15)_inset]">
         Opening 2026
       </span>
     </div>
@@ -218,14 +218,14 @@ export default function HomePage() {
 
     {/* teaser + quick facts */}
     <div className="mt-6 grid gap-6 md:grid-cols-3">
-      <p className="md:col-span-2 text-amber-100/90 leading-relaxed max-w-prose">
+      <p className="md:col-span-2 text-[#3b2a1f] leading-relaxed max-w-prose">
         Welcome to Victor’s Classic Deli, where every sandwich tells a story of
         friendship, dedication, and a promise kept. This isn’t fast food, it’s
         food that means something. We’re getting everything right for our grand
         opening, and we can’t wait to welcome you.
       </p>
 
-      <ul className="grid gap-3 text-amber-100/90">
+      <ul className="grid gap-3 text-[#3b2a1f]">
         {[
           "Classic deli done with care",
           "Nashville roots • Chicago inspiration",
@@ -243,7 +243,7 @@ export default function HomePage() {
 
     {/* full story (collapsible) */}
     <details className="mt-6 group/open">
-      <summary className="list-none inline-flex items-center gap-2 cursor-pointer rounded-xl border border-gold/60 bg-black/20 px-4 py-2 text-sm text-amber-100/90 hover:bg-white/5 hover:border-gold transition">
+      <summary className="list-none inline-flex items-center gap-2 cursor-pointer rounded-xl border border-gold/60 bg-black/20 px-4 py-2 text-sm text-[#3b2a1f] hover:bg-white/5 hover:border-gold transition">
         Read the full story
         <svg
           aria-hidden
@@ -257,7 +257,7 @@ export default function HomePage() {
         </svg>
       </summary>
 
-      <div className="mt-4 text-amber-100/90 leading-relaxed max-w-prose space-y-4">
+      <div className="mt-4 text-[#3b2a1f] leading-relaxed max-w-prose space-y-4">
       </div>
     </details>
 
@@ -282,7 +282,7 @@ export default function HomePage() {
     ].map((q) => (
       <blockquote
         key={q}
-        className="rounded-xl border border-gold/50 bg-black/10 p-4 text-amber-100/90 italic"
+        className="rounded-xl border border-gold/50 bg-black/10 p-4 text-[#3b2a1f] italic"
       >
         {q}
       </blockquote>
@@ -305,7 +305,7 @@ export default function HomePage() {
     />
 
     <h2 className="h-display subhead-gold text-3xl mb-1">Visit Us</h2>
-    <p className="text-amber-100/90 mb-3">
+    <p className="text-[#3b2a1f] mb-3">
       Mena Plaza, Nashville, TN
     </p>
   </div>
@@ -350,7 +350,7 @@ export default function HomePage() {
   href="https://mail.google.com/mail/?view=cm&fs=1&to=delibyvic@gmail.com&su=Inquiry%20from%20Victor%E2%80%99s%20Deli%20Website&body=Hi%20Victor%2C%0A%0A"
   target="_blank"
   rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-xl border border-gold bg-black/20 px-5 py-2.5 text-sm md:text-base text-amber-100/90 hover:bg-white/5 hover:border-gold transition"
+  className="inline-flex items-center gap-2 rounded-xl border border-gold bg-black/20 px-5 py-2.5 text-sm md:text-base text-[#3b2a1f] hover:bg-white/5 hover:border-gold transition"
 >
   Email Us
   <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">

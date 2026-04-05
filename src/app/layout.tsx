@@ -28,9 +28,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-cocoa-900 text-[15px] text-amber-50 bg-brown-radial`}
-      >
+     <body
+  className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-[#f7f3ee] text-[#2a1a12] text-[15px]`}
+>
         <div className="min-h-screen flex flex-col">
 
           <Header />
