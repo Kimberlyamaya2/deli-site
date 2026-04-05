@@ -112,7 +112,7 @@ export default function HomePage() {
       key={c.h}
       href={c.link || "#"}
       className={[
-        "p-5 bg-cocoa-800/60 border-gold rounded-2xl text-center",
+        "p-5 bg-[#fffaf5]border-gold rounded-2xl text-center",
         "transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(212,175,55,0.1)]",
         c.link ? "cursor-pointer" : "",
       ].join(" ")}
