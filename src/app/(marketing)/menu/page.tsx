@@ -1,46 +1,37 @@
-import OrnateFrame from "@/components/OrnateFrame";
-import MenuGrid from "@/components/MenuGrid";
-import SectionJump from "@/components/SectionJump";
-
 export default function MenuPage() {
   return (
-    <div className="space-y-12">
-      <OrnateFrame>
-        {/* Title */}
-        <div className="text-center mb-8 md:mb-10">
-          <p className="inline-flex items-center gap-2 rounded-full border border-[#a88463] bg-[#e6d6c5] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#7a563b] shadow-sm">
+    <main className="min-h-screen bg-[#efe4d3] px-6 py-16">
+      <div className="mx-auto flex min-h-[75vh] max-w-5xl items-center justify-center">
+        <div className="w-full max-w-2xl rounded-[32px] border border-[#d8c1a6] bg-[#f7efe3] px-8 py-14 text-center shadow-[0_20px_60px_rgba(90,60,30,0.10)] sm:px-12">
+          <div className="mb-5 inline-flex rounded-full border border-[#d7b894] bg-[#f3e4cf] px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-[#8a5a33]">
             Victor’s Classic Deli
-          </p>
-
-          <h1 className="h-display text-4xl md:text-5xl text-[#5a3d2b] uppercase tracking-[0.04em] font-bold mt-4 mb-2">
-            Menu
-          </h1>
-
-          <p className="text-[#5f4735] text-sm md:text-base italic">
-            Built with care, flavor, and purpose.
-          </p>
-
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-[#6f4d34]">
-            <span>🌶 Spicy</span>
-            <span>🟢 Vegetarian</span>
-            <span>💲 Build Your Own / Variable Pricing</span>
           </div>
 
-          <p className="mt-3 text-xs md:text-sm text-[#6f4d34]">
-            Breakfast served 7:00 AM – 11:30 AM • Catering available
+          <h1 className="font-serif text-4xl text-[#4e3422] sm:text-5xl">
+            View Our Menu
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[#7a5a43] sm:text-lg">
+            Explore our full selection of deli favorites, hot sandwiches, sides,
+            and more through our hosted menu.
           </p>
-        </div>
 
-        {/* Compact corner control */}
-        <div className="sticky top-16 z-20 flex justify-end mb-4">
-          <SectionJump />
-        </div>
+          <div className="mt-10">
+            <a
+              href="https://your-external-menu-link.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-[#9b673d] px-8 py-4 text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#7f522f] focus:outline-none focus:ring-4 focus:ring-[#d7b894]"
+            >
+              Click here to view the menu
+            </a>
+          </div>
 
-        {/* Menu grid */}
-        <div className="mt-2">
-          <MenuGrid />
+          <div className="mt-10 border-t border-[#dfc8ad] pt-6 text-sm text-[#8a6a52]">
+            Opens in a new tab
+          </div>
         </div>
-      </OrnateFrame>
-    </div>
+      </div>
+    </main>
   );
 }
