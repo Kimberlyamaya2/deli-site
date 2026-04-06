@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import OrnateFrame from "@/components/OrnateFrame";
 
 type Status = "idle" | "success" | "error";
 
@@ -10,154 +11,227 @@ export default function ContactPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const form = e.currentTarget; // 👈 keep a reference to the form
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-  setSubmitting(true);
-  setStatus("idle");
-  setErrorMessage(null);
+    setSubmitting(true);
+    setStatus("idle");
+    setErrorMessage(null);
 
-  const formData = new FormData(form);
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          reason: formData.get("reason"),
+          message: formData.get("message"),
+        }),
+      });
 
-  try {
-    const res = await fetch("/api/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        reason: formData.get("reason"),
-        message: formData.get("message"),
-      }),
-    });
+      const json = await res.json().catch(() => ({}));
 
-    const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Failed to send");
+      }
 
-    if (!res.ok || !json.success) {
-      throw new Error(json.error || "Failed to send");
+      setStatus("success");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setErrorMessage(
+        err instanceof Error ? err.message : "Something went wrong."
+      );
+    } finally {
+      setSubmitting(false);
     }
-
-    setStatus("success");
-    form.reset(); // 👈 use the saved form, not e.currentTarget
-  } catch (err) {
-    console.error(err);
-    setStatus("error");
-    setErrorMessage(
-      err instanceof Error ? err.message : "Something went wrong."
-    );
-  } finally {
-    setSubmitting(false);
-  }
-};
+  };
 
   return (
-    <section className="relative scroll-mt-20 text-amber-100">
-      {/* soft background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_-10%,rgba(212,175,55,0.08),transparent)] pointer-events-none" />
+    <section className="relative scroll-mt-20 text-[#2b211b]">
+      <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_-10%,rgba(155,107,52,0.08),transparent)] pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto px-6 md:px-10 lg:px-16 py-16 space-y-12">
-        {/* HEADER */}
-        <header className="text-center space-y-4">
-          <p className="inline-flex items-center gap-2 rounded-full border border-gold/60 bg-cocoa-800/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-gold-200/90">
-            Get in Touch • Victor’s Classic Deli
-          </p>
-
-          <h1 className="h-display subhead-gold text-4xl md:text-5xl tracking-wide">
-            Contact Victor’s
-          </h1>
-
-          <p className="text-base sm:text-lg md:text-xl text-amber-200/85 max-w-2xl mx-auto">
-            Questions, feedback, or just saying hello – we’d love to hear from you.
-          </p>
-        </header>
-
-        {/* INFO + FORM */}
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
-          {/* INFO COLUMN */}
-          <aside className="space-y-5 rounded-2xl border border-gold/70 bg-black/10 p-6 md:p-7 shadow-[0_6px_24px_rgba(212,175,55,0.12)] backdrop-blur-sm">
-            <div>
-              <h2 className="h-display title-section text-xl mb-1 text-gold-200">
-                Visit Us
-              </h2>
-              <p className="text-sm md:text-base text-amber-100/85 leading-relaxed">
-                Mena Plaza<br />
-                360 Wallace Rd<br />
-                Nashville, TN 37211
+      <div className="relative max-w-6xl mx-auto px-6 md:px-10 lg:px-16 py-14 md:py-16 space-y-14">
+        {/* HERO */}
+        <OrnateFrame>
+          <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-10 items-center">
+            <div className="space-y-5">
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#a88463] bg-[#efe1d0] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#7a563b] shadow-sm">
+                Contact Victor’s
               </p>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=360+Wallace+Rd+Nashville+TN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex text-xs md:text-sm text-gold-200/90 hover:text-gold-100 underline underline-offset-4"
-              >
-                Open in Google Maps
-              </a>
-            </div>
 
-            <div className="border-t border-gold/25 pt-4 space-y-3">
-              <div>
-                <h3 className="text-gold-200 text-sm font-semibold mb-1">
-                  Call
-                </h3>
-                <a
-                  href="tel:6150000000"
-                  className="text-sm md:text-base text-amber-100/90 hover:text-gold-100"
-                >
-                  (615) 000-0000
-                </a>
-              </div>
+              <h1 className="h-display text-[#4a3225] text-4xl sm:text-5xl md:text-6xl uppercase tracking-[0.04em] font-bold leading-[0.95]">
+                Let’s Talk
+              </h1>
 
-              <div>
-                <h3 className="text-gold-200 text-sm font-semibold mb-1">
-                  Email
-                </h3>
-                <a
-                  href="mailto:delibyvic@gmail.com"
-                  className="text-sm md:text-base text-amber-100/90 hover:text-gold-100 break-all"
-                >
-                  delibyvic@gmail.com
-                </a>
-              </div>
+              <p className="text-base sm:text-lg md:text-xl italic text-[#5f4735] max-w-xl">
+                Questions, catering inquiries, feedback, or just saying hello —
+                we’d love to hear from you.
+              </p>
 
-              <div>
-                <h3 className="text-gold-200 text-sm font-semibold mb-1">
-                  Hours
-                </h3>
-                <p className="text-sm md:text-base text-amber-100/85">
-                  Mon–Sat: 8AM–7PM<br />
-                  Sun: Closed
+              <div className="h-px w-32 rounded-full bg-gradient-to-r from-transparent via-[#8a5a2b] to-transparent" />
+
+              <div className="rounded-2xl border border-[#b99d84] bg-[#e6d6c5] p-5 shadow-[0_8px_22px_rgba(43,33,27,0.08)] max-w-xl">
+                <p className="text-[#2b211b] text-base leading-relaxed">
+                  Whether you’re reaching out about the menu, catering, hours,
+                  or future opportunities, we’re here for it.
+                </p>
+                <p className="mt-2 text-[#6f4d34] text-sm">
+                  We read every message and do our best to respond quickly.
                 </p>
               </div>
             </div>
+
+            <div className="grid gap-4">
+              {[
+                {
+                  h: "Visit",
+                  p: "Mena Plaza\n360 Wallace Rd\nNashville, TN 37211",
+                },
+                {
+                  h: "Call",
+                  p: "(615) 000-0000",
+                },
+                {
+                  h: "Hours",
+                  p: "Mon–Sat: 8AM–7PM\nSun: Closed",
+                },
+              ].map((item) => (
+                <div
+                  key={item.h}
+                  className="rounded-xl border border-[#bda186] bg-[#e6d6c5] p-4 shadow-[0_6px_16px_rgba(43,33,27,0.05)]"
+                >
+                  <h2 className="h-display text-[#5a3d2b] text-lg uppercase tracking-[0.04em] font-bold mb-1">
+                    {item.h}
+                  </h2>
+                  <p className="text-[#5a4333] text-sm whitespace-pre-line leading-relaxed">
+                    {item.p}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </OrnateFrame>
+
+        {/* MAIN CONTACT AREA */}
+        <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-8 items-start">
+          {/* INFO SIDEBAR */}
+          <aside className="space-y-4">
+            <div className="rounded-2xl border border-[#b99d84] bg-[#e2d1bf] p-6 shadow-[0_10px_24px_rgba(43,33,27,0.06)]">
+              <h2 className="h-display text-[#5a3d2b] text-2xl uppercase tracking-[0.04em] font-bold mb-3">
+                Reach Us
+              </h2>
+
+              <div className="h-px w-full bg-[#c7ab90] mb-5" />
+
+              <div className="space-y-5 text-sm md:text-base">
+                <div>
+                  <p className="text-[#6f4d34] uppercase tracking-wide text-xs font-semibold mb-1">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:delibyvic@gmail.com"
+                    className="text-[#2b211b] hover:text-[#6f4d34] break-all"
+                  >
+                    delibyvic@gmail.com
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-[#6f4d34] uppercase tracking-wide text-xs font-semibold mb-1">
+                    Phone
+                  </p>
+                  <a
+                    href="tel:6150000000"
+                    className="text-[#2b211b] hover:text-[#6f4d34]"
+                  >
+                    (615) 000-0000
+                  </a>
+                </div>
+
+                <div>
+  <p className="text-[#6f4d34] uppercase tracking-wide text-xs font-semibold mb-1">
+    Instagram
+  </p>
+
+  <a
+    href="https://www.instagram.com/delibyvic/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 text-[#2b211b] hover:text-[#6f4d34]"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      className="h-4 w-4"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+
+    @delibyvic
+  </a>
+</div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-[#bda186] bg-[#e6d6c5] p-4 shadow-[0_6px_16px_rgba(43,33,27,0.05)]">
+              <h3 className="h-display text-[#5a3d2b] text-lg uppercase tracking-[0.04em] font-bold mb-1">
+                Good to Know
+              </h3>
+              <p className="text-[#5a4333] text-sm leading-relaxed">
+                For catering or larger orders, include your date, headcount,
+                and preferred pickup time in the message so we can help faster.
+              </p>
+            </div>
           </aside>
 
-          {/* FORM COLUMN */}
-          <div className="rounded-2xl border border-gold/60 bg-black/10 p-6 md:p-7 shadow-[0_6px_24px_rgba(212,175,55,0.12)]">
+          {/* FORM */}
+          <div className="rounded-2xl border border-[#9f7a58] bg-[#dcc7b2] p-6 md:p-7 shadow-[0_14px_34px_rgba(43,33,27,0.14)]">
+            <div className="mb-5">
+              <h2 className="h-display text-[#4a3225] text-2xl md:text-3xl uppercase tracking-[0.04em] font-bold">
+                Send a Message
+              </h2>
+              <p className="mt-2 text-[#5a4333] text-sm md:text-base">
+                Fill out the form and we’ll get back to you as soon as we can.
+              </p>
+            </div>
+
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-xs font-semibold tracking-wide uppercase text-amber-200/80 mb-1.5">
+                  <label className="block text-xs font-semibold tracking-wide uppercase text-[#6f4d34] mb-1.5">
                     Name
                   </label>
                   <input
                     type="text"
                     name="name"
                     required
-                    className="w-full rounded-lg border border-gold/40 bg-black/20 px-3 py-2 text-sm text-amber-100 placeholder:text-amber-100/40 focus:outline-none focus:ring-2 focus:ring-[var(--gold-primary)]/60 focus:border-[var(--gold-primary)]"
+                    className="w-full rounded-lg border border-[#b99d84] bg-[#f3e7db] px-3 py-2 text-sm text-[#2b211b] placeholder:text-[#8a6a52] focus:outline-none focus:ring-2 focus:ring-[#8a5a2b]/30 focus:border-[#8a5a2b]"
                     placeholder="Your name"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-semibold tracking-wide uppercase text-amber-200/80 mb-1.5">
+                  <label className="block text-xs font-semibold tracking-wide uppercase text-[#6f4d34] mb-1.5">
                     Email
                   </label>
                   <input
                     type="email"
                     name="email"
                     required
-                    className="w-full rounded-lg border border-gold/40 bg-black/20 px-3 py-2 text-sm text-amber-100 placeholder:text-amber-100/40 focus:outline-none focus:ring-2 focus:ring-[var(--gold-primary)]/60 focus:border-[var(--gold-primary)]"
+                    className="w-full rounded-lg border border-[#b99d84] bg-[#f3e7db] px-3 py-2 text-sm text-[#2b211b] placeholder:text-[#8a6a52] focus:outline-none focus:ring-2 focus:ring-[#8a5a2b]/30 focus:border-[#8a5a2b]"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -165,58 +239,60 @@ export default function ContactPage() {
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-xs font-semibold tracking-wide uppercase text-amber-200/80 mb-1.5">
+                  <label className="block text-xs font-semibold tracking-wide uppercase text-[#6f4d34] mb-1.5">
                     Phone (optional)
                   </label>
                   <input
                     type="tel"
                     name="phone"
-                    className="w-full rounded-lg border border-gold/40 bg-black/20 px-3 py-2 text-sm text-amber-100 placeholder:text-amber-100/40 focus:outline-none focus:ring-2 focus:ring-[var(--gold-primary)]/60 focus:border-[var(--gold-primary)]"
+                    className="w-full rounded-lg border border-[#b99d84] bg-[#f3e7db] px-3 py-2 text-sm text-[#2b211b] placeholder:text-[#8a6a52] focus:outline-none focus:ring-2 focus:ring-[#8a5a2b]/30 focus:border-[#8a5a2b]"
                     placeholder="(615) 555-1234"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-semibold tracking-wide uppercase text-amber-200/80 mb-1.5">
+                  <label className="block text-xs font-semibold tracking-wide uppercase text-[#6f4d34] mb-1.5">
                     Reason
                   </label>
                   <select
                     name="reason"
-                    className="w-full rounded-lg border border-gold/40 bg-black/20 px-3 py-2 text-sm text-amber-100 focus:outline-none focus:ring-2 focus:ring-[var(--gold-primary)]/60 focus:border-[var(--gold-primary)]"
                     defaultValue=""
+                    className="w-full rounded-lg border border-[#b99d84] bg-[#f3e7db] px-3 py-2 text-sm text-[#2b211b] focus:outline-none focus:ring-2 focus:ring-[#8a5a2b]/30 focus:border-[#8a5a2b]"
                   >
                     <option value="" disabled>
                       Select an option
                     </option>
-                    <option value="question">General Question</option>
+                    <option value="general">General Question</option>
+                    <option value="catering">Catering</option>
                     <option value="feedback">Feedback</option>
-                    <option value="other">Something Else</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold tracking-wide uppercase text-amber-200/80 mb-1.5">
+                <label className="block text-xs font-semibold tracking-wide uppercase text-[#6f4d34] mb-1.5">
                   Message
                 </label>
                 <textarea
                   name="message"
-                  rows={5}
+                  rows={6}
                   required
-                  className="w-full rounded-lg border border-gold/40 bg-black/20 px-3 py-2 text-sm text-amber-100 placeholder:text-amber-100/40 focus:outline-none focus:ring-2 focus:ring-[var(--gold-primary)]/60 focus:border-[var(--gold-primary)] resize-y"
+                  className="w-full rounded-lg border border-[#b99d84] bg-[#f3e7db] px-3 py-2 text-sm text-[#2b211b] placeholder:text-[#8a6a52] focus:outline-none focus:ring-2 focus:ring-[#8a5a2b]/30 focus:border-[#8a5a2b] resize-y"
                   placeholder="Tell us how we can help..."
                 />
               </div>
 
               <div className="flex items-center justify-between pt-3 gap-3 flex-wrap">
-                {/* status text */}
                 <div className="text-xs md:text-sm min-h-[1.5rem]">
                   {status === "success" && (
-                    <span className="text-emerald-300">
+                    <span className="text-[#2f6b3d]">
                       Message sent! We’ll get back to you soon.
                     </span>
                   )}
+
                   {status === "error" && (
-                    <span className="text-red-300">
+                    <span className="text-[#8b2f2f]">
                       {errorMessage || "Something went wrong. Please try again."}
                     </span>
                   )}
@@ -225,7 +301,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex items-center gap-2 rounded-xl border border-[rgba(212,175,55,0.75)] bg-black/20 px-5 py-2.5 text-sm md:text-base text-amber-100/90 hover:bg-white/5 hover:border-gold transition shadow-[0_8px_20px_rgba(212,175,55,0.18)] hover:shadow-[0_10px_24px_rgba(212,175,55,0.26)] disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 rounded-xl border border-[#8f6b4f] bg-[#2b211b] px-5 py-2.5 text-sm md:text-base text-white hover:bg-[#3a2d25] transition shadow-[0_8px_20px_rgba(43,33,27,0.14)] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {submitting ? "Sending..." : "Send Message"}
                   {submitting ? (
@@ -259,9 +335,14 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* subtle bottom divider like home */}
-        <div className="mt-12 flex justify-center">
-          <span className="h-[1px] w-[85%] max-w-3xl bg-[var(--gold-primary)]/30 rounded-full" />
+        <div className="rounded-2xl border border-[#b99d84] bg-[#dcc7b2] px-6 py-8 shadow-[0_10px_24px_rgba(43,33,27,0.06)]">
+          <div className="flex items-center justify-center gap-4 text-center flex-wrap">
+            <span className="h-[1.5px] w-16 bg-[#b38a67] rounded-full"></span>
+            <p className="text-xl md:text-2xl font-semibold text-[#5a3d2b] leading-snug">
+              Good food starts with good people — reach out anytime.
+            </p>
+            <span className="h-[1.5px] w-16 bg-[#b38a67] rounded-full"></span>
+          </div>
         </div>
       </div>
     </section>
