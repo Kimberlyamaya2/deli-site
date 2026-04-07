@@ -1,4 +1,3 @@
-// src/app/api/send/route.ts
 import { Resend } from "resend";
 
 export async function POST(request: Request) {
@@ -13,8 +12,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const resend = new Resend(apiKey);
-
     const { name, email, phone, reason, message } = await request.json();
 
     if (!name || !email || !message) {
@@ -24,19 +21,23 @@ export async function POST(request: Request) {
       );
     }
 
+    const resend = new Resend(apiKey);
+
     const { data, error } = await resend.emails.send({
-     from: "Victor’s Deli <onboarding@resend.dev>",
-      to: "delibyvic@gmail.com",
-       replyTo: email, 
-      subject: "New Contact Form Message",
+      from: "Victor's Deli <contact@victorsclassicdeli.com>",
+      to: ["delibyvic@gmail.com"],
+      replyTo: email,
+      subject: `New Contact Form Message${reason ? ` - ${reason}` : ""}`,
       html: `
-        <h2>New Inquiry from the Website</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-        <p><strong>Reason:</strong> ${reason || "N/A"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #2b211b;">
+          <h2>New Inquiry from Victor's Classic Deli Website</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+          <p><strong>Reason:</strong> ${reason || "N/A"}</p>
+          <p><strong>Message:</strong></p>
+          <p>${String(message).replace(/\n/g, "<br />")}</p>
+        </div>
       `,
     });
 
@@ -48,11 +49,10 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Resend success:", data);
-
     return Response.json({ success: true, data });
   } catch (error) {
     console.error("Route error:", error);
+
     return Response.json(
       {
         success: false,
