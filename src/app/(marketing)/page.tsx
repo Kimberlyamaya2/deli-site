@@ -88,8 +88,8 @@ export default function HomePage() {
       {/* INFO CARDS */}
       <div className="grid md:grid-cols-3 gap-6">
         {[
-          { h: "Hours", p: "Mon–Sat: 8AM–7PM" },
-          { h: "Call", p: "(615) 000-0000", link: "tel:0000000000" },
+          { h: "Hours", p: "Mon–Sat: 7AM–9PM, Closed Sundays" },
+          { h: "Call", p: "(615) 490-3544", link: "tel:6154903544" },
           {
             h: "Visit",
             p: "360 Wallace Rd, Nashville, TN 37211",
