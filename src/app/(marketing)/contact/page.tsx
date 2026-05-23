@@ -149,10 +149,10 @@ export default function ContactPage() {
                     Phone
                   </p>
                   <a
-                    href="tel:6150000000"
+                    href="tel:6154903544"
                     className="text-[#2b211b] hover:text-[#6f4d34]"
                   >
-                    (615) 000-0000
+                    (615) 490-3544
                   </a>
                 </div>
 
