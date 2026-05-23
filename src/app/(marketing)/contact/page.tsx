@@ -97,11 +97,11 @@ export default function ContactPage() {
                 },
                 {
                   h: "Call",
-                  p: "(615) 000-0000",
+                  p: "(615) 490-3544",
                 },
                 {
                   h: "Hours",
-                  p: "Mon–Sat: 8AM–7PM\nSun: Closed",
+                  p: "Mon–Sat: 7AM–9PM, Closed Sundays",
                 },
               ].map((item) => (
                 <div
