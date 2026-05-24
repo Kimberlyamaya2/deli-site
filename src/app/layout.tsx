@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-[#f6efe7] text-[#2b211b] text-[15px]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-[#fbf7f2] text-[#2b211b] text-[15px]`}
       >
         <script
           type="application/ld+json"
