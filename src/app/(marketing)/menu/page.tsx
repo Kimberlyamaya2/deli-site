@@ -18,12 +18,12 @@ export default function MenuPage() {
 
           <div className="mt-10">
             <a
-              href="https://your-external-menu-link.com"
+              href="https://order.toasttab.com/online/victors-360-wallace-rd-nashville-tn-37211-united-states"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-[#9b673d] px-8 py-4 text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#7f522f] focus:outline-none focus:ring-4 focus:ring-[#d7b894]"
             >
-              Click here to view the menu
+              Click here to order online
             </a>
           </div>
 

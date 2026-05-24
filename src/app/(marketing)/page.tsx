@@ -83,8 +83,10 @@ export default function HomePage() {
 
 <div className="flex justify-center gap-4 pt-8">
 
-      <GoldButton
-        href="/menu"
+     <GoldButton
+  href="https://order.toasttab.com/online/victors-360-wallace-rd-nashville-tn-37211-united-states"
+  target="_blank"
+  rel="noopener noreferrer"
         className="
           border border-[#8f6b4f]
           bg-[#2b211b]
@@ -174,10 +176,10 @@ export default function HomePage() {
   "
 >
 
-  <SectionLinkOverlay
-    href="/menu"
-    label="Go to full Menu page"
-  />
+ <SectionLinkOverlay
+  href="https://order.toasttab.com/online/victors-360-wallace-rd-nashville-tn-37211-united-states"
+  label="Open Full Menu"
+/>
 
   {/* TITLE */}
   <div className="flex items-center justify-center gap-6 text-center">
@@ -210,30 +212,30 @@ export default function HomePage() {
         category: "Hot Signature Subs",
         name: "Victor’s Chicken Bacon Ranch",
         desc: "Chicken, turkey bacon, peppers, onions & ranch",
-        price: "$12.99",
+        price: "$13.99",
       },
       {
         category: "Hot Signature Subs",
-        name: "Spicy Chipotle Chicken",
-        desc: "Pepper jack, hot giardiniera & chipotle ranch",
-        price: "$12.99",
+        name: "Narajs Famous Butter Chicken",
+        desc: "Butter chicken sauce, mozzarella & fried onion",
+        price: "$14.99",
       },
       {
         category: "Burgers",
-        name: "Classic Double Burger",
-        desc: "Two beef patties, American cheese & Big Vic sauce",
+        name: "Victors Rise & Shine",
+        desc: "Two beef patties with two slices of American yellow cheese, lettuce, fried egg, turkey bacon, tomato, avocado, and onions. Served with Big Vic Sauce",
         price: "$10.99",
       },
       {
-        category: "Breakfast",
-        name: "Veggie Melt Croissant",
-        desc: "Egg, avocado, mushrooms & peppers",
-        price: "$7.99",
+        category: "Pizza",
+        name: "Victors Meat Lover’s Pizza",
+        desc: "16 inch crust layered with tomato sauce, a mix of turkey pepperoni, turkey bacon, and beef sausage, topped with mozzarella cheese, finished with garlic sauce",
+        price: "$19.99",
       },
       {
         category: "Breakfast Burritos",
-        name: "The Hot Chicken Burrito",
-        desc: "Buffalo fried chicken & ranch",
+        name: "Victor’s Nashville HOT",
+        desc: "Eggs, turkey bacon, grilled onions & peppers, buffalo fried chicken, American cheese, hashbrown patty, ranch, and Nashville hot sauce.",
         price: "$10.99",
       },
       {
@@ -324,7 +326,9 @@ export default function HomePage() {
   <div className="text-center pt-2">
 
     <a
-      href="/menu"
+      href="https://order.toasttab.com/online/victors-360-wallace-rd-nashville-tn-37211-united-states"
+      target="_blank"
+      rel="noopener noreferrer"
       className="
         inline-flex items-center gap-2
         rounded-xl
