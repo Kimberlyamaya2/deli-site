@@ -41,7 +41,7 @@ export default function AboutPage() {
               <div className="mx-auto w-full max-w-md rounded-2xl border border-[#9f7a58] bg-[#dcc7b2] shadow-[0_18px_36px_rgba(43,33,27,0.14)] overflow-hidden">
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#d8c2ab]">
                   <Image
-                    src="/Cartoon.png"
+                    src="/UpdatedCartoon.PNG" 
                     alt="Cartoon Victor and Niraj — a brotherhood remembered"
                     fill
                     className="object-cover object-[center_5%]"
