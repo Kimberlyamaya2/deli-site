@@ -93,7 +93,7 @@ export default function ContactPage() {
               {[
                 {
                   h: "Visit",
-                  p: "Mena Plaza\n360 Wallace Rd\nNashville, TN 37211",
+                  p: "Suite 130 - Mena Plaza\n360 Wallace Rd\nNashville, TN 37211",
                 },
                 {
                   h: "Call",
