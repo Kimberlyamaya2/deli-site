@@ -126,7 +126,7 @@ export default function HomePage() {
       { h: "Call", p: "(615) 490-3544", link: "tel:6154903544" },
       {
         h: "Visit",
-        p: "Suite, 130 - 360 Wallace Rd, Nashville, TN 37211",
+        p: "Suite 130 - 360 Wallace Rd, Nashville, TN 37211",
         link: "#visit",
       },
     ].map((c) => (
