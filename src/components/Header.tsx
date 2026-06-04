@@ -21,15 +21,11 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -38,34 +34,42 @@ export default function Header() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] rounded-md bg-[#2b211b] px-3 py-2 text-white border border-[#b99d84]"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] rounded-md bg-[#1e1108] px-3 py-2 text-[#e0b97a] border border-[#6b3a1f]"
       >
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-[#c4ab93] bg-[rgba(231,216,200,0.95)] backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-[#6b3a1f] bg-[rgba(30,17,8,0.97)] backdrop-blur-md">
+        {/* Spice stripe along the bottom of the header */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 right-0 h-[2px]"
+          style={{
+            background:
+              "repeating-linear-gradient(90deg,#c9993f 0px,#c9993f 10px,#8a3a0f 10px,#8a3a0f 18px,transparent 18px,transparent 26px)",
+          }}
+        />
+
         <div className="w-full flex items-center justify-between py-3 px-3 md:px-6">
           <Link href="/" className="flex items-center gap-3">
-            <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[#b99d84] bg-[#e9dbc9] shadow-sm">
+            <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[#6b3a1f] bg-[#2b1a0f] shadow-sm">
               <Image
                 src="/logo.png"
-                alt="Victor’s Classic Deli"
+                alt="Victor's Classic Deli"
                 fill
                 sizes="40px"
                 className="object-cover"
                 priority
               />
             </div>
-
-            <span className="h-display text-[#3d2d22] text-xl font-semibold">
-              Victor’s Classic Deli
+            <span className="h-display text-[#f0dfc5] text-xl font-semibold">
+              Victor&apos;s Classic Deli
             </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-5" aria-label="Primary">
             {links.map((l) => {
               const active = pathname === l.href;
-
               return (
                 <Link
                   key={l.href}
@@ -74,8 +78,8 @@ export default function Header() {
                   className={[
                     "transition text-sm font-medium",
                     active
-                      ? "text-[#2b211b] underline underline-offset-4 decoration-[#8a6a52]"
-                      : "text-[#5f4735] hover:text-[#2b211b]",
+                      ? "text-[#c9993f] underline underline-offset-4 decoration-[#c9993f]"
+                      : "text-[#c5a882] hover:text-[#e0b97a]",
                   ].join(" ")}
                 >
                   {l.label}
@@ -86,30 +90,16 @@ export default function Header() {
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex items-center justify-center rounded-md px-3 py-2 border border-[#b99d84] bg-[#e9dbc9] text-[#2b211b] focus:outline-none focus:ring-2 focus:ring-[#9b6b34]/40"
+            className="md:hidden inline-flex items-center justify-center rounded-md px-3 py-2 border border-[#6b3a1f] bg-[#2b1a0f] text-[#e0b97a] focus:outline-none focus:ring-2 focus:ring-[#c9993f]/40"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
             {open ? (
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M18 6 6 18M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M3 6h18M3 12h18M3 18h18" />
               </svg>
             )}
@@ -123,18 +113,26 @@ export default function Header() {
             aria-hidden
             tabIndex={-1}
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-40 bg-black/30 md:hidden"
+            className="fixed inset-0 z-40 bg-black/50 md:hidden"
           />
 
           <nav
             id="mobile-nav"
             aria-label="Mobile Primary"
-            className="fixed inset-y-0 right-0 z-50 md:hidden w-4/5 max-w-xs bg-[#e9dbc9] border-l border-[#c4ab93] shadow-[0_0_40px_rgba(43,33,27,0.12)] px-4 py-5 flex flex-col"
+            className="fixed inset-y-0 right-0 z-50 md:hidden w-4/5 max-w-xs bg-[#1e1108] border-l border-[#6b3a1f] shadow-[0_0_40px_rgba(14,8,2,0.40)] px-4 py-5 flex flex-col"
           >
+            {/* Spice stripe top */}
+            <div
+              aria-hidden
+              className="h-[2px] w-full mb-5"
+              style={{
+                background:
+                  "repeating-linear-gradient(90deg,#c9993f 0px,#c9993f 10px,#8a3a0f 10px,#8a3a0f 18px,transparent 18px,transparent 26px)",
+              }}
+            />
             <ul className="space-y-1">
               {links.map((l) => {
                 const active = pathname === l.href;
-
                 return (
                   <li key={l.href}>
                     <Link
@@ -144,12 +142,12 @@ export default function Header() {
                       className={[
                         "flex items-center justify-between rounded-md px-3 py-2 text-base transition",
                         active
-                          ? "text-[#2b211b] bg-[#dfcfbc] border border-[#c4ab93]"
-                          : "text-[#5f4735] hover:text-[#2b211b] hover:bg-[#dfcfbc]",
+                          ? "text-[#c9993f] bg-[#2b1a0f] border border-[#6b3a1f]"
+                          : "text-[#c5a882] hover:text-[#e0b97a] hover:bg-[#2b1a0f]",
                       ].join(" ")}
                     >
                       <span>{l.label}</span>
-                      <span className="text-[#8a6a52] text-sm">&#8250;</span>
+                      <span className="text-[#c9993f] text-sm">›</span>
                     </Link>
                   </li>
                 );
