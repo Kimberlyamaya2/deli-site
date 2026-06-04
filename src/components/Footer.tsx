@@ -6,7 +6,7 @@ export default function Footer() {
         {/* Left */}
         <p className="text-center md:text-left">
           © {new Date().getFullYear()} Victor’s Classic Deli —{" "}
-          <span className="text-[#2b211b]">Nashville, TN</span> — April 2026
+          <span className="text-[#2b211b]">Nashville, TN</span> — June 2026
         </p>
 
         {/* Right: ICON BUTTONS */}

@@ -18,7 +18,7 @@ export default function HomePage() {
 >
   <div className="max-w-4xl text-center space-y-4">
     <div className="inline-flex items-center gap-2 rounded-full border border-[#b8926d] bg-[#f3e6d8] px-4 py-1 text-[11px] uppercase tracking-[0.2em] text-[#7a563b] shadow-sm">
-      Est. 2026 • Classic Deli
+      Est. 2025 • Classic Deli
     </div>
 
    <h1
@@ -65,7 +65,7 @@ export default function HomePage() {
       "
     >
       <span className="rounded-full border border-[#c7ab8f] bg-[#f3e7db] px-4 py-2">
-        Breakfast All Day
+        Breakfast 7am - 11am
       </span>
 
       <span className="rounded-full border border-[#c7ab8f] bg-[#f3e7db] px-4 py-2">
@@ -73,9 +73,17 @@ export default function HomePage() {
       </span>
 
       <span className="rounded-full border border-[#c7ab8f] bg-[#f3e7db] px-4 py-2">
-        Smash Burgers
+        Double Stacked Burgers
       </span>
 
+      <span className="rounded-full border border-[#c7ab8f] bg-[#f3e7db] px-4 py-2">
+        16-inch Pizzas
+      </span>
+
+       <span className="rounded-full border border-[#c7ab8f] bg-[#f3e7db] px-4 py-2">
+        Paninis
+      </span>
+      
       <span className="rounded-full border border-[#c7ab8f] bg-[#f3e7db] px-4 py-2">
         Fresh Smoothies
       </span>
@@ -210,19 +218,19 @@ export default function HomePage() {
     {[
       {
         category: "Hot Signature Subs",
-        name: "Victor’s Chicken Bacon Ranch",
+        name: "Chicken Bacon Ranch",
         desc: "Chicken, turkey bacon, peppers, onions & ranch",
         price: "$13.99",
       },
       {
         category: "Hot Signature Subs",
-        name: "Narajs Famous Butter Chicken",
+        name: "Nirajs Famous Butter Chicken",
         desc: "Butter chicken sauce, mozzarella & fried onion",
         price: "$14.99",
       },
       {
         category: "Burgers",
-        name: "Victors Rise & Shine",
+        name: "Rise & Shine",
         desc: "Two beef patties with two slices of American yellow cheese, lettuce, fried egg, turkey bacon, tomato, avocado, and onions. Served with Big Vic Sauce",
         price: "$10.99",
       },
@@ -234,7 +242,7 @@ export default function HomePage() {
       },
       {
         category: "Breakfast Burritos",
-        name: "Victor’s Nashville HOT",
+        name: "Nashville HOT",
         desc: "Eggs, turkey bacon, grilled onions & peppers, buffalo fried chicken, American cheese, hashbrown patty, ranch, and Nashville hot sauce.",
         price: "$10.99",
       },
@@ -243,6 +251,18 @@ export default function HomePage() {
         name: "Island Smoothie",
         desc: "Coconut, strawberries & pineapple",
         price: "$7.99",
+      },
+      {
+        category: "Paninis",
+        name: "The Classic",
+        desc: "Golden sourdough pressed with layers of oven-roasted turkey, melted mozzarella, and crispy turkey bacon. Finished with Victor's gold sauce for a rich, buttery, savory bite. Finished with garlic buttered parsley on top",
+        price: "$11.99",
+      },
+      {
+        category: "Fries ",
+        name: "Loaded Fries",
+        desc: "Topped with fried chicken, turkey bacon bites, grilled onions, Big Vic sauce, ranch, spring onion, and nacho cheese. One size",
+        price: "$10.99",
       },
     ].map((i) => (
 
