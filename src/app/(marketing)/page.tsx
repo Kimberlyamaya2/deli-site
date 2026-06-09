@@ -109,7 +109,7 @@ export default function HomePage() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2">
-          {["Halal Friendly","Fresh Made Daily","Nashville Roots","Chicago Soul","No Shortcuts"].map(b => (
+          {["Fresh Made Daily","Nashville Roots","Chicago Soul","No Shortcuts"].map(b => (
             <span key={b} className="rounded-full border border-[#c9993f]/50 bg-[rgba(201,153,63,0.10)] text-[#e0b97a] px-3 py-1 text-[11px] uppercase tracking-[0.14em]">{b}</span>
           ))}
         </div>
