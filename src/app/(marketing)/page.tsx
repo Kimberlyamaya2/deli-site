@@ -275,16 +275,27 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* map */}
-        <a href="https://www.google.com/maps/place/360+Wallace+Rd,+Nashville,+TN+37211" target="_blank" rel="noopener noreferrer"
-          className="block rounded-xl border border-[#6b3a1f] overflow-hidden shadow-[0_8px_24px_rgba(14,8,2,0.30)]"
-        >
-          <iframe title="Victor's Classic Deli Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.318067527977!2d-86.7227287!3d36.0787653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646f986abc2f1d%3A0x7c60b60477c4a08b!2s360%20Wallace%20Rd%2C%20Nashville%2C%20TN%2037211!5e0!3m2!1sen!2sus!4v1730316000000!5m2!1sen!2sus"
-            width="100%" height="300" style={{ border: 0, pointerEvents: "none" }} allowFullScreen loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade" className="w-full h-72 md:h-80"
-          />
-        </a>
+{/* map */}
+<div className="relative rounded-xl border border-[#6b3a1f] overflow-hidden shadow-[0_8px_24px_rgba(14,8,2,0.30)]">
+  <iframe
+    title="Victor's Classic Deli Location"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.318067527977!2d-86.7227287!3d36.0787653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646f986abc2f1d%3A0x7c60b60477c4a08b!2s360%20Wallace%20Rd%2C%20Nashville%2C%20TN%2037211!5e0!3m2!1sen!2sus!4v1730316000000!5m2!1sen!2sus"
+    width="100%"
+    height="300"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    className="w-full h-72 md:h-80"
+  />
+  <a
+    href="https://www.google.com/maps/place/360+Wallace+Rd,+Nashville,+TN+37211"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="absolute inset-0 z-10"
+    aria-label="Open location in Google Maps"
+  />
+</div>
       </section>
 
       {/* ── CONTACT CTA — DARK SECTION ── */}
