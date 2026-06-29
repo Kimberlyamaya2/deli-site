@@ -41,6 +41,7 @@ export default function HomePage() {
                 { label: "16-inch Pizzas", dark: false },
                 { label: "Paninis", dark: true },
                 { label: "Fresh Smoothies", dark: false },
+                { label: "Halal Chicken & Beef", dark: false },
               ].map(({ label, dark }) => (
                 <span key={label} className={dark
                   ? "rounded-full border border-[#6b3a1f] bg-[#2b1a0f] text-[#e0b97a] px-4 py-2"
