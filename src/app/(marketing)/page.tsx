@@ -66,6 +66,17 @@ export default function HomePage() {
     Order on DoorDash
   </a>
 
+ <a
+    href="https://www.grubhub.com/restaurant/victors-classic-deli-360-wallace-road-suite-130-nashville/14414400?utm_source=grubhub_web&utm_medium=content_owned&utm_campaign=menushare&utm_content=share-link"
+    target="_blank" rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 rounded-xl border border-[#e8202a] bg-[#e8202a] px-5 py-2.5 text-sm text-white font-bold hover:bg-[#c41a22] transition shadow-[0_8px_20px_rgba(232,32,42,0.3)]"
+  >
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3a7 7 0 1 1 0 14A7 7 0 0 1 12 5zm-1 3v5l4 2.5-.75-1.3L13 13V8h-2z"/>
+    </svg>
+    Order on Grubhub
+  </a>
+
   <GoldButton href="/contact" className="border border-[rgba(201,153,63,0.5)] bg-transparent text-[#f0dfc5] hover:bg-[rgba(201,153,63,0.10)]">
     Contact
   </GoldButton>
