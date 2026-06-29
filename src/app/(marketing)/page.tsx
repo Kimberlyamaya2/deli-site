@@ -35,7 +35,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap justify-center gap-2 text-[12px] uppercase tracking-[0.16em] pt-1">
               {[
-                { label: "Breakfast 7am – 11am", dark: true },
+                { label: "Breakfast ALL DAY", dark: true },
                 { label: "Signature Subs", dark: true },
                 { label: "Double Stacked Burgers", dark: false },
                 { label: "16-inch Pizzas", dark: false },
@@ -48,16 +48,28 @@ export default function HomePage() {
                 }>{label}</span>
               ))}
             </div>
-            <div className="flex justify-center gap-4 pt-6">
+            <div className="flex flex-wrap justify-center gap-4 pt-6">
               <GoldButton
-                href="https://order.toasttab.com/online/victors-360-wallace-rd-nashville-tn-37211-united-states"
-                target="_blank" rel="noopener noreferrer"
-                className="border border-[#c9993f] bg-[#c9993f] text-[#1e1108] hover:bg-[#b8882e] shadow-[0_10px_28px_rgba(201,153,63,0.35)] font-bold"
-              >View Menu</GoldButton>
-              <GoldButton href="/contact" className="border border-[rgba(201,153,63,0.5)] bg-transparent text-[#f0dfc5] hover:bg-[rgba(201,153,63,0.10)]">
-                Contact
-              </GoldButton>
-            </div>
+          href="https://order.toasttab.com/online/victors-360-wallace-rd-nashville-tn-37211-united-states"
+    target="_blank" rel="noopener noreferrer"
+    className="border border-[#c9993f] bg-[#c9993f] text-[#1e1108] hover:bg-[#b8882e] shadow-[0_10px_28px_rgba(201,153,63,0.35)] font-bold"
+      >View Menu</GoldButton>
+
+  <a
+    href="YOUR_DOORDASH_LINK_HERE"
+    target="_blank" rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 rounded-xl border border-[#e8202a] bg-[#e8202a] px-5 py-2.5 text-sm text-white font-bold hover:bg-[#c41a22] transition shadow-[0_8px_20px_rgba(232,32,42,0.3)]"
+  >
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3a7 7 0 1 1 0 14A7 7 0 0 1 12 5zm-1 3v5l4 2.5-.75-1.3L13 13V8h-2z"/>
+    </svg>
+    Order on DoorDash
+  </a>
+
+  <GoldButton href="/contact" className="border border-[rgba(201,153,63,0.5)] bg-transparent text-[#f0dfc5] hover:bg-[rgba(201,153,63,0.10)]">
+    Contact
+  </GoldButton>
+</div>
           </div>
         </section>
       </OrnateFrame>
@@ -65,7 +77,7 @@ export default function HomePage() {
       {/* ── INFO CARDS — CREAM LIGHT SECTION ── */}
       <div className="grid md:grid-cols-3 gap-5">
         {[
-          { h: "Hours", p: "Mon–Sat: 7AM–9PM\nClosed Sundays", link: "#" },
+          { h: "Hours", p: "Mon–Fri: 9AM–9PM\n Sat: 9AM–10PM\nClosed Sunday", link: "#" },
           { h: "Call", p: "(615) 490-3544", link: "tel:6154903544" },
           { h: "Visit", p: "Suite 130 — 360 Wallace Rd\nNashville, TN 37211", link: "#visit" },
         ].map((c) => (
@@ -119,7 +131,7 @@ export default function HomePage() {
           {[
             { category: "Hot Signature Subs", name: "Chicken Bacon Ranch", desc: "Chicken, turkey bacon, peppers, onions & ranch", price: "$13.99" },
             { category: "Hot Signature Subs", name: "Nirajs Famous Butter Chicken", desc: "Butter chicken sauce, mozzarella & fried onion", price: "$14.99" },
-            { category: "Burgers", name: "Rise & Shine", desc: "Two beef patties, American cheese, fried egg, turkey bacon, tomato, avocado & onions. Served with Big Vic Sauce", price: "$10.99" },
+            { category: "Burgers", name: "Rise & Shine", desc: "Two beef patties, American cheese, fried egg, turkey bacon, tomato, avocado & onions. Served with Big Vic Sauce", price: "$14.99" },
             { category: "Pizza", name: "Victors Meat Lover's Pizza", desc: "16 inch crust with tomato sauce, turkey pepperoni, turkey bacon, beef sausage, mozzarella & garlic sauce", price: "$19.99" },
             { category: "Breakfast Burritos", name: "Nashville HOT", desc: "Eggs, turkey bacon, grilled onions & peppers, buffalo fried chicken, American cheese, hashbrown patty, ranch & Nashville hot sauce", price: "$10.99" },
             { category: "Smoothies", name: "Island Smoothie", desc: "Coconut, strawberries & pineapple", price: "$7.99" },
@@ -184,7 +196,7 @@ export default function HomePage() {
             <p className="text-[#5a3a1f] text-sm mt-1">Built on brotherhood, promise, and purpose.</p>
           </div>
           <span className="shrink-0 rounded-full border border-[#c9993f] px-3 py-1 text-xs tracking-wide text-[#8a3a0f] bg-[rgba(201,153,63,0.15)]">
-            Opening 2026
+            Opened 2026
           </span>
         </div>
 
@@ -261,8 +273,8 @@ export default function HomePage() {
         {/* info strip above map */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5">
           {[
-            { label: "Hours", value: "Mon–Sat 7AM–9PM" },
-            { label: "Closed", value: "Sundays" },
+            { label: "Hours", value: "MON–FRI: 9AM–9PM, SAT: 9AM–10PM " },
+            { label: "Closed", value: "SUNDAY(S)" },
             { label: "Phone", value: "(615) 490-3544" },
           ].map(({ label, value }) => (
             <div key={label} className="rounded-xl px-4 py-3 relative overflow-hidden"
