@@ -56,7 +56,7 @@ export default function HomePage() {
       >View Menu</GoldButton>
 
   <a
-    href="YOUR_DOORDASH_LINK_HERE"
+    href="https://www.doordash.com/store/victor-classic-deli-(wallace-rd)-nashville-42567923/111467950/?aw=M9_NfprzNKsu9vrC&utm_source=mx_share"
     target="_blank" rel="noopener noreferrer"
     className="inline-flex items-center gap-2 rounded-xl border border-[#e8202a] bg-[#e8202a] px-5 py-2.5 text-sm text-white font-bold hover:bg-[#c41a22] transition shadow-[0_8px_20px_rgba(232,32,42,0.3)]"
   >
