@@ -141,14 +141,14 @@ export default function HomePage() {
         {/* Menu cards — CREAM on dark background = high contrast */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {[
-            { category: "Hot Signature Subs", name: "Chicken Bacon Ranch", desc: "Chicken, turkey bacon, peppers, onions & ranch", price: "$13.99" },
-            { category: "Hot Signature Subs", name: "Nirajs Famous Butter Chicken", desc: "Butter chicken sauce, mozzarella & fried onion", price: "$14.99" },
-            { category: "Burgers", name: "Rise & Shine", desc: "Two beef patties, American cheese, fried egg, turkey bacon, tomato, avocado & onions. Served with Big Vic Sauce", price: "$14.99" },
-            { category: "Pizza", name: "Victors Meat Lover's Pizza", desc: "16 inch crust with tomato sauce, turkey pepperoni, turkey bacon, beef sausage, mozzarella & garlic sauce", price: "$19.99" },
-            { category: "Breakfast Burritos", name: "Nashville HOT", desc: "Eggs, turkey bacon, grilled onions & peppers, buffalo fried chicken, American cheese, hashbrown patty, ranch & Nashville hot sauce", price: "$10.99" },
+            { category: "Hot Signature Subs", name: "Chicken Bacon Ranch", desc: "Chicken, turkey bacon, peppers, onions & ranch", price: "$15.99" },
+            { category: "Hot Signature Subs", name: "Nirajs Famous Butter Chicken", desc: "Butter chicken sauce, mozzarella & fried onion", price: "$15.99" },
+            { category: "Burgers", name: "Rise & Shine", desc: "Two beef patties, American cheese, fried egg, turkey bacon, tomato, avocado & onions. Served with Big Vic Sauce", price: "$20.99" },
+            { category: "Pizza", name: "Victors Meat Lover's Pizza", desc: "16 inch crust with tomato sauce, turkey pepperoni, turkey bacon, beef sausage, mozzarella & garlic sauce", price: "$23.99" },
+            { category: "Breakfast Burritos", name: "Nashville HOT", desc: "Eggs, turkey bacon, grilled onions & peppers, buffalo fried chicken, American cheese, hashbrown patty, ranch & Nashville hot sauce", price: "$15.99" },
             { category: "Smoothies", name: "Island Smoothie", desc: "Coconut, strawberries & pineapple", price: "$7.99" },
-            { category: "Paninis", name: "The Classic", desc: "Golden sourdough pressed with oven-roasted turkey, melted mozzarella & crispy turkey bacon. Finished with Victor's gold sauce", price: "$11.99" },
-            { category: "Fries", name: "Loaded Fries", desc: "Fried chicken, turkey bacon bites, grilled onions, Big Vic sauce, ranch, spring onion & nacho cheese. One size", price: "$10.99" },
+            { category: "Paninis", name: "The Classic", desc: "Golden sourdough pressed with oven-roasted turkey, melted mozzarella & crispy turkey bacon. Finished with Victor's gold sauce", price: "$14.99" },
+            { category: "Fries", name: "Loaded Fries", desc: "Fried chicken, turkey bacon bites, grilled onions, Big Vic sauce, ranch, spring onion & nacho cheese. One size", price: "$14.99" },
           ].map((item) => (
             <div key={item.name}
               className="rounded-[20px] px-5 py-4 transition-all duration-300 ease-out hover:-translate-y-1 relative overflow-hidden"
